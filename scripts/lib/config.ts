@@ -27,7 +27,7 @@ const negativeTestCase = z.strictObject({
 
 /**
  * OpenAI listing fields, written to `extensions["com.openai"]`.
- * @see https://developers.openai.com/plugins/deploy/submission#prepare-metadata-in-pluginjson for the requirements.
+ * @see https://developers.openai.com/plugins/deploy/submission#agent-plugins-format for the requirements.
  */
 const openai = z.strictObject({
   /** Directory listing subtitle. */
