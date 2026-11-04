@@ -1,14 +1,14 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "attio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build pipeline, advance deals, and grow accounts.",
   "author": {
     "name": "Attio",
     "url": "https://attio.com"
   },
   "homepage": "https://attio.com",
-  "repository": "https://github.com/attio/skills",
+  "repository": "https://github.com/attio/ai-plugins",
   "keywords": [
     "attio",
     "crm",
