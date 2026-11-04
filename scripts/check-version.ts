@@ -14,15 +14,17 @@ if (git("diff", "--name-only", `${base}...HEAD`, "--", "plugins") === "") {
   process.exit(0);
 }
 
+/** Whether `path` exists on the base branch. */
+function existsOnBase(path: string): boolean {
+  return git("ls-tree", "--name-only", base, "--", path) !== "";
+}
+
 /** The version on the base branch, or undefined before the first release. */
 function baseVersion(): string | undefined {
   for (const plugin of config.plugins) {
-    try {
-      const manifest = git("show", `${base}:plugins/${plugin.name}/.claude-plugin/plugin.json`);
-      return (JSON.parse(manifest) as { version?: string }).version;
-    } catch {
-      continue;
-    }
+    const path = `plugins/${plugin.name}/.claude-plugin/plugin.json`;
+    if (!existsOnBase(path)) continue;
+    return (JSON.parse(git("show", `${base}:${path}`)) as { version?: string }).version;
   }
   return undefined;
 }

@@ -36,14 +36,14 @@ This repository is a plugin marketplace for Claude Code and Codex. Install the p
 In Claude Code:
 
 ```
-/plugin install attio --marketplace attio/skills
-/plugin install attio-dev --marketplace attio/skills
+/plugin install attio --marketplace attio/ai-plugins
+/plugin install attio-dev --marketplace attio/ai-plugins
 ```
 
 In Codex:
 
 ```
-codex plugin marketplace add attio/skills
+codex plugin marketplace add attio/ai-plugins
 codex plugin add attio@attio
 codex plugin add attio-dev@attio
 ```
@@ -55,23 +55,8 @@ asks. The assistant can only see and change what your Attio permissions allow.
 
 ## Updates
 
-The marketplace installs from `main`, and every change to a plugin comes with a new version.
+To get the latest version of a plugin:
 
 - **Claude Code:** run `claude plugin update <plugin>@attio` in a terminal, or turn on auto-update for the
   `attio` marketplace in `/plugin` under Marketplaces. Run `/reload-plugins` to load the new version.
 - **Codex:** checks for updates when it starts. Run `codex plugin marketplace upgrade attio` to check now.
-
-## Repository layout
-
-```text
-plugins/<plugin>/skills/<skill>/SKILL.md   skills, one folder each
-plugins/<plugin>/README.md                 plugin overview
-plugin.config.ts                           source for every manifest and marketplace file
-scripts/                                   generator, checks and the release build
-```
-
-Each plugin folder also holds manifests for every supported client. They're generated from
-`plugin.config.ts`, so don't edit them by hand.
-
-A pull request that changes a plugin also raises `version` in `plugin.config.ts`, and CI checks it. Merging it to
-`main` releases that version as a GitHub release tagged `v<version>`.

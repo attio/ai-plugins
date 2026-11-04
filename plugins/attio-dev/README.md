@@ -9,12 +9,12 @@ The plugin only adds skills. It doesn't connect to your Attio workspace or to an
 In Claude Code:
 
 ```
-/plugin install attio-dev --marketplace attio/skills
+/plugin install attio-dev --marketplace attio/ai-plugins
 ```
 
 In Codex:
 
 ```
-codex plugin marketplace add attio/skills
+codex plugin marketplace add attio/ai-plugins
 codex plugin add attio-dev@attio
 ```

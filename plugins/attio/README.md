@@ -11,12 +11,12 @@ The plugin adds the [Attio MCP server](https://docs.attio.com/mcp/overview) at `
 In Claude Code:
 
 ```
-/plugin install attio --marketplace attio/skills
+/plugin install attio --marketplace attio/ai-plugins
 ```
 
 In Codex:
 
 ```
-codex plugin marketplace add attio/skills
+codex plugin marketplace add attio/ai-plugins
 codex plugin add attio@attio
 ```
