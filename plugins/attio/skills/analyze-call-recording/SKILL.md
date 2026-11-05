@@ -65,7 +65,6 @@ Calls often mix types, such as discovery that turns into a demo. Choose the type
 ```
 
 - **Ground every point in the transcript.** For the points that matter most, quote a short phrase with its timestamp, like "I have a budget" (8:54).
-- **Name gaps instead of filling them.** If a topic was not discussed, say so. A named gap tells the user what to ask next. A guess misleads them.
 - **Keep it short.** The user should be able to act on it in a minute. Leave out a section that has nothing in it, and put the missing topic under Gaps and risks.
 - **Use the user's methodology.** Do not impose a sales framework. If the user names one, such as MEDDICC or BANT, structure the analysis around it.
 
