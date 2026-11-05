@@ -20,10 +20,11 @@ workspace access, the [Attio MCP server](https://docs.attio.com/mcp/overview).
 
 <!-- BEGIN GENERATED: skills -->
 
-| Plugin      | Skill                                                        | Description                                                             |
-| ----------- | ------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| `attio`     | [`onboarding`](plugins/attio/skills/onboarding/SKILL.md)     | Sets up the Attio plugin for a new user.                                |
-| `attio-dev` | [`attio-apps`](plugins/attio-dev/skills/attio-apps/SKILL.md) | Build, modify, debug or review Attio apps built with the Attio App SDK. |
+| Plugin      | Skill                                                                            | Description                                                             |
+| ----------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `attio`     | [`analyze-call-recording`](plugins/attio/skills/analyze-call-recording/SKILL.md) | Analyze a recorded call in Attio.                                       |
+| `attio`     | [`onboarding`](plugins/attio/skills/onboarding/SKILL.md)                         | Sets up the Attio plugin for a new user.                                |
+| `attio-dev` | [`attio-apps`](plugins/attio-dev/skills/attio-apps/SKILL.md)                     | Build, modify, debug or review Attio apps built with the Attio App SDK. |
 
 <!-- END GENERATED: skills -->
 
