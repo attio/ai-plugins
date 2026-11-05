@@ -20,12 +20,13 @@ workspace access, the [Attio MCP server](https://docs.attio.com/mcp/overview).
 
 <!-- BEGIN GENERATED: skills -->
 
-| Plugin      | Skill                                                                            | Description                                                                                |
-| ----------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `attio`     | [`analyze-call-recording`](plugins/attio/skills/analyze-call-recording/SKILL.md) | Analyze a recorded call in Attio.                                                          |
-| `attio`     | [`get-sales-context`](plugins/attio/skills/get-sales-context/SKILL.md)           | Work out how the user sells in Attio, so you or another skill can work in their workspace. |
-| `attio`     | [`onboarding`](plugins/attio/skills/onboarding/SKILL.md)                         | Sets up the Attio plugin for a new user.                                                   |
-| `attio-dev` | [`attio-apps`](plugins/attio-dev/skills/attio-apps/SKILL.md)                     | Build, modify, debug or review Attio apps built with the Attio App SDK.                    |
+| Plugin      | Skill                                                                            | Description                                                                                                                                                                               |
+| ----------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `attio`     | [`analyze-call-recording`](plugins/attio/skills/analyze-call-recording/SKILL.md) | Analyze a recorded call in Attio.                                                                                                                                                         |
+| `attio`     | [`get-my-pipeline`](plugins/attio/skills/get-my-pipeline/SKILL.md)               | Show the user's open Attio deals, from whichever object or list holds their pipeline, grouped by stage, with totals, each deal's next task or meeting, and the deals that need attention. |
+| `attio`     | [`get-sales-context`](plugins/attio/skills/get-sales-context/SKILL.md)           | Work out how the user sells in Attio, so you or another skill can work in their workspace.                                                                                                |
+| `attio`     | [`onboarding`](plugins/attio/skills/onboarding/SKILL.md)                         | Sets up the Attio plugin for a new user.                                                                                                                                                  |
+| `attio-dev` | [`attio-apps`](plugins/attio-dev/skills/attio-apps/SKILL.md)                     | Build, modify, debug or review Attio apps built with the Attio App SDK.                                                                                                                   |
 
 <!-- END GENERATED: skills -->
 
