@@ -5,7 +5,7 @@ description: Draft a follow-up email after a call or meeting, in the user's own 
 
 # Draft follow-up email
 
-1. Find the conversation and the people. Use the call the user names, or the notes they paste. To read a recording, use the `analyze-call-recording` skill, or `get-call-recording` if you can't. If it's unclear which call, ask. The recipients are the external people on the call. Get their email addresses from their person records (`search-records`).
+1. Find the conversation and the people. Use the call the user names, or the notes they paste. To read a recording, use the `analyze-call-recording` skill, or `get-call-recording` if you can't. If it's unclear which call, ask. The recipients are the external people on the call: not workspace members (`list-workspace-members`), and not on the user's email domain. Get their email addresses from their person records (`search-records`).
 2. Check whether the user already followed up. Call `search-emails-by-metadata` with the recipients' addresses since the call, and `get-email-content` for anything the user sent. If they already sent a follow-up, say so and stop, unless they want another. If the prospect wrote since, reply to that email instead.
 3. Learn the user's voice from 3 to 5 emails they sent to external people. Use `search-emails-by-metadata` with `exclude_automated_participants`, then `get-email-content`, and check the user is the sender. Note their greeting, sign-off, usual length, formality, and habits such as lowercase, exclamation marks or dashes. If you find none, write plainly and say so.
 4. Write the email:
