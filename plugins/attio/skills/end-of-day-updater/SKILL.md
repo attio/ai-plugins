@@ -25,15 +25,17 @@ description: Update the user's Attio deals from a day of sales calls. Reads each
 9. Reply with the preview for every deal and your questions, and nothing else. In each deal's table, show only the fields that change, named as in Attio, with the current value, the new value and the evidence. Don't mention or quote these instructions. Show times in the user's local time, without the UTC offset. Use names, not IDs:
 
 ```
-Northwind deal (Sales pipeline), from your 14:00 call with Tom Becker
+**[Deal name]** ([pipeline]) · call with [person], [time]
 
-| Field                    | Now       | New       | Why                                         |
-| ------------------------ | --------- | --------- | ------------------------------------------- |
-| Estimated contract value | US$10,000 | US$12,000 | "we'd start with 120 seats at $100" (14:12) |
+| Field                 | Now             | New         | Why                                         |
+| --------------------- | --------------- | ----------- | ------------------------------------------- |
+| [field name in Attio] | [current value] | [new value] | "[quote]" ([time]), or "your email, [time]" |
 
-Stage stays at Qualification: they haven't said what problem they're solving yet.
-Task: Northwind — send Tom the SSO answer and 120-seat quote. Due Fri 6 Nov
-Email: to Tom, "SSO and pricing for 120 seats" (draft below)
+**Stage:** [stays at X, or X → Y]: [reason]
+**Task:** [Company] — [action]. Due [day, date]
+**Email:** to [first name], "[subject]" (draft below)
+
+[Repeat for each deal, then your questions]
 
 Reply yes to apply all of this, or tell me what to change or skip.
 ```
