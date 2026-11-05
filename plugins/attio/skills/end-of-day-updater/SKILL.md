@@ -5,7 +5,7 @@ description: Update the user's Attio deals from a day of sales calls. Reads each
 
 # End-of-day updater
 
-1. Call `whoami` (only if you haven't already called it in this conversation). Get the current date, time and the user's time zone from your environment. If you can't, ask. Use the day the user names, or today. A participant is internal when their email domain matches the user's.
+1. Call `whoami` (only if you haven't already called it in this conversation). Get the current date, time and the user's time zone from your environment. If you can't, ask. Use the day the user names, or today. A participant is internal when they're a workspace member (`list-workspace-members`) or their email domain matches the user's.
 2. Find that day's calls with `search-meetings` (in the user's time zone) and `search-call-recordings-by-metadata` (the user as a speaker). Skip meetings where every participant is internal. If the user pastes notes, treat each set of notes as a call. If a meeting has no recording and no notes, list it in the summary and skip it. If there are no calls, say so and stop.
    - A call the user didn't speak on gets a read-only summary: no updates, tasks or email.
    - A transcript under two minutes is a possible no-show. Ask before treating it as a call.
