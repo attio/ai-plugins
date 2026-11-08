@@ -9,6 +9,7 @@ description: Create the next follow-up task in Attio for a deal, company or pers
    - If the user promised something, the task is that promise.
    - If something needs preparing for a booked call, the task is that preparation, due the day before the call.
    - If the prospect pushed their decision to a later date and nothing is booked, the task is to re-engage two to three weeks before that date. If that's within the next week, use the day halfway between today and their date.
+   - If there are several actions, the task is the one due first. Name the others in it only if they're due the same day. List the rest for the user, and ask if they want a task for each.
    - If there's nothing left to do, or the only next step is a booked call with nothing to prepare, don't create a task. Say so.
 2. Work out the due date: the day they have to act, not the day it's mentioned. Get today's date and the user's time zone from your environment.
    - "Early next week" is Monday, "end of the week" is Friday, "next week" with no day is Tuesday, and a named day is the next one.
@@ -20,13 +21,13 @@ description: Create the next follow-up task in Attio for a deal, company or pers
    - If only the date is wrong, move its date.
    - If the wording no longer fits, mark it done and create the new task. Task wording can't be edited.
    - If it's already right, say so and stop.
-5. Write the task as one line under 15 words. Start with the company name, then a verb, then exactly what and for whom. Name the thing, such as "the SSO answer and 120-seat quote", not "follow up" or "touch base".
-6. Show it and ask. Include the Replaces line only when you're replacing an open task:
+5. If the user or the skill that called this one gave the wording, use it, adding the company name at the start if it's missing. Otherwise, write the task as one line under 15 words. Start with the company name, then a verb, then exactly what and for whom. Name the thing, such as "the SSO answer and 120-seat quote", not "follow up" or "touch base".
+6. Show it and ask:
 
 ```
 **Task:** [Company] — [action]
 **Due:** [day, date] · **For:** [you, or the teammate's name] · **Linked to:** [record]
-**Replaces:** "[open task]" (will be marked done)
+**Replaces:** "[open task]" (will be marked done) ← only when replacing an open task from step 4; otherwise leave this line out
 
 Create it?
 ```
