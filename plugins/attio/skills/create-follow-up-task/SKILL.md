@@ -36,6 +36,6 @@ A record has one open follow-up task, covering everything to do next on it.
 Create it?
 ```
 
-When another skill is building a preview, give it the task in this form and let that skill ask.
+If this task is part of a bigger preview, such as an end-of-day update, add it there in this form and ask once for the whole preview.
 
 7. After the user says yes, make only the change you showed. Use `update-task` to change an open task's date or assignee, or to mark it done. For a new task, call `create-task` with `content`, `deadline_at`, `assignee_workspace_member_id` and the linked record. Set `deadline_at` to midday on the due date in the user's time zone, converted to UTC, so it shows on the right day. Never call `delete-task`. Confirm in one line.
