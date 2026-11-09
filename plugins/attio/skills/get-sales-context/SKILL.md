@@ -1,14 +1,14 @@
 ---
 name: get-sales-context
-description: Work out how the user sells in Attio, so you or another skill can work in their workspace. Finds where the pipelines live (a deals object, a custom object or a list), their stages and key fields, which ones are actually used, who owns what, and the sales motion, such as sales-led, product-led or account management. Read-only. Use before sales work in a workspace you don't know yet, when a task needs to know where deals, stages or values live (for example, to show the user's pipeline), or when the user asks how their sales process is set up. Not for showing the pipeline itself, updating records, analyzing calls, or changing objects, lists, stages or fields.
+description: Work out how the user sells in Attio, so you or another skill can work in their workspace. Finds where the pipelines live (a deals or custom object), their stages and key fields, which ones are actually used, who owns what, and the sales motion, such as sales-led, product-led or account management. Read-only. Use before sales work in a workspace you don't know yet, when a task needs to know where deals, stages or values live (for example, to show the user's pipeline), or when the user asks how their sales process is set up. Not for showing the pipeline itself, updating records, analyzing calls, or changing objects, lists, stages or fields.
 ---
 
 # Get sales context
 
-Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them. Usually another task needs the result, not the user.
+Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them.
 
 1. Call `whoami` (only if you haven't already called it in this conversation). List everything with `list-objects`, `list-lists` and `list-activities`, paging until there are no more.
-2. Find the pipelines. A pipeline is an object or list with a status attribute. Read the attributes of every object, including companies and people, and each list, with `list-attribute-definitions` or `list-list-attribute-definitions`. For each pipeline, note:
+2. Find the pipelines. A pipeline is usually an object with a status attribute. Some workspaces have hundreds of objects, so don't read them all. Read the attributes of `deals`, companies and people, and of the objects whose names suggest sales, such as opportunities, accounts, subscriptions, users or workspaces, with `list-attribute-definitions`. Some teams run a pipeline as a list instead, so also check lists whose names suggest sales with `list-list-attribute-definitions`. Read others only if that finds no sales pipeline, or the task needs one you haven't found. For each pipeline, note:
    - what it sits on: its own object, or a list on companies, people or deals
    - its stages in order, and which mean won, lost or paused
    - which fields play these roles, whatever they're called: value (a currency, such as contract value or ARR), close date, owner, likelihood (a rating, probability or forecast), next step, lost reason
@@ -25,14 +25,11 @@ Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them
    - **When the user asked how they sell:** reply with the write-up and nothing else. Use names, not slugs or IDs:
 
 ```
-How you sell: product-led. People sign up into Workspaces (1,240 records, with Plan and Seats). Sales works the larger accounts in Opportunities, and renewals run on a Renewals list.
+People sign up into Workspaces (1,240 records, with Plan and Seats). Sales works the larger accounts in Opportunities.
 
 Opportunities · object · 312 records, 87 open · you own 23
   Stages: Discovery → Demo → Trial → Proposal → Closed won · Closed lost
   Value: Amount (USD) · Close date: Expected close · Likelihood: Forecast (select) · Owner: AE
-Renewals · list on companies · 140 entries
-  Stages: Upcoming → In review → Renewed · Churned
-  Value: ARR (USD) · Owner: Account manager · Health: Health score
 Not sales: Hiring (list on people)
 Barely used: Deals object (2 records)
 
