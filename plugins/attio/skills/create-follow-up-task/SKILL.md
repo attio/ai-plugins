@@ -22,12 +22,13 @@ description: Create the next follow-up task in Attio for a deal, company or pers
    - If the wording no longer fits, offer to replace it: mark it done and create the new task. The user can keep both instead. Task wording can't be edited.
    - If it's already right, say so and stop.
 5. If the user or the skill that called this one gave the wording, use it, adding the company name at the start if it's missing. Otherwise, write the task as one line under 15 words. Start with the company name, then a verb, then exactly what and for whom. Name the thing, such as "the SSO answer and 120-seat quote", not "follow up" or "touch base".
-6. Show it and ask. Include the Replaces line only when you're offering to replace an open task:
+6. Show it and ask. Include the Replaces line only when you're offering to replace an open task, and the Updates line only when you're changing an open task's date or assignee:
 
 ```
 **Task:** [Company] — [action]
 **Due:** [day, date] · **For:** [you, or the teammate's name] · **Linked to:** [record]
 **Replaces:** "[open task]" (will be marked done, or say to keep both)
+**Updates:** "[open task]" (changes its [date or assignee], no new task)
 
 Create it?
 ```
