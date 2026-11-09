@@ -1,6 +1,6 @@
 ---
 name: create-follow-up-task
-description: Create the follow-up task in Attio for one deal, company or person. One task per record, covering everything to do next, for the right person, due when they next have to act, and without duplicating an open task. Writes only after the user confirms. Use when the user asks to add a task, reminder or follow-up ("remind me to send Leif the quote on Friday", "add a task to chase AppSumo"), or when another skill needs a follow-up task. A workflow that needs tasks for several records uses this once per record.
+description: Create the follow-up task in Attio for one deal, company or person. One task per record, covering everything to do next, for the right person, due when they next have to act, and without duplicating an open task. Writes only after the user confirms. Use when the user asks to add a task, reminder or follow-up ("remind me to send Leif the quote on Friday", "add a task to chase Basepoint"), or when another skill needs a follow-up task. A workflow that needs tasks for several records uses this once per record.
 ---
 
 # Create follow-up task
