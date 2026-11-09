@@ -24,7 +24,7 @@ A record has one open follow-up task, covering everything to do next on it.
    - If it's right, say so and stop.
    - If it covers the actions but the date or assignee is wrong, change them.
    - Otherwise, offer to replace it with one task covering its actions that are still to do and the new ones. Task wording can't be edited, so replacing means marking it done and creating the new task. The user can keep both instead.
-5. Write the task. If the user or the calling skill gave the wording, use it, adding the company name at the start if it's missing. Otherwise, start with the company name, then each action as a verb and exactly what and for whom, under 15 words each and separated by semicolons. Name the thing, such as "the SSO answer and 120-seat quote", not "follow up" or "touch base".
+5. Write the task. If the message gives you the wording, use it, adding the company name at the start if it's missing. Otherwise, start with the company name, then each action as a verb and exactly what and for whom, under 15 words each and separated by semicolons. Name the thing, such as "the SSO answer and 120-seat quote".
 6. Show it and ask. Include the Replaces line only when offering to replace an open task, and the Updates line only when changing one's date or assignee:
 
 ```
