@@ -6,14 +6,14 @@ description: Show the user's open Attio deals, from whichever object or list hol
 # Get my pipeline
 
 1. Call `whoami` (only if you haven't already called it in this conversation), and get today's date from your environment. Show the user's pipeline unless they name a teammate. For a teammate, find them with `list-workspace-members`. If more than one matches, ask.
-2. Find where the pipeline lives. Use the pipeline the `get-sales-context` skill finds, and run it first if it hasn't run in this conversation. If that doesn't settle it, check `deals`, any custom object and each list for a status attribute, with `list-attribute-definitions` or `list-list-attribute-definitions`. Use the pipeline where the person owns the most open records. If they own records in more than one sales pipeline, show each one separately. Don't assume slugs. Find the stage, value, owner, close date and next step fields, whatever they're called. Note the stage order. Stages named won, lost or closed are closed. If you can't tell which stages are closed, ask.
+2. Find where the pipeline lives. Use the pipeline the `get-sales-context` skill finds, and run it first if it hasn't run in this conversation. Use the pipeline where the person owns the most open records. If they own records in more than one sales pipeline, show each one separately. Don't assume slugs. Find the stage, value, owner, close date and next step fields, whatever they're called. Note the stage order. Stages named won, lost or closed are closed. If you can't tell which stages are closed, ask.
 3. Get the person's open records with `list-records` (for an object) or `list-records-in-list` (for a list), filtered by owner. Page with `offset` until there are no more. Work out the counts and totals yourself.
 4. Find what's next for each deal:
    - `list-tasks` for the person's open tasks. Page through all of them. Match tasks to deals by linked record, or for a list entry, by its parent record.
-   - `search-meetings` for the next 14 days. Match meetings to deals by related record, or by the deal's company.
+   - `search-meetings` for the next 30 days, paging through them. Match meetings to deals by related record, or by the deal's company.
 5. Apply what the user asked for, such as one stage, closing this month, or over a value. If they ask which deals have gone quiet, use the interaction attributes on the deal or its company, such as last interaction, and say what those cover. If they ask for something the workspace has no attribute for, such as a close date, say so and show the full pipeline.
 6. List a deal under "Needs attention" when:
-   - it has no open task and no meeting in the next 14 days
+   - it has no open task and no meeting in the next 30 days
    - a task is overdue
    - its close date has passed
    - it has no value
@@ -30,7 +30,7 @@ Negotiation (2) · US$72,000
   Hooli · US$12,000 · next: pricing call Thu 12 Nov
 
 Needs attention
-  Globex: no task, and no meeting in the next 14 days
+  Globex: no task, and no meeting in the next 30 days
   Initech: close date has passed, and the task is overdue
 ```
 
