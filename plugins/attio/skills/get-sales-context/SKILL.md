@@ -21,7 +21,7 @@ Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them
      If you can't tell what a pipeline is for, list it under questions. Ask the user only if the task you're doing depends on it.
 5. Check how the team works: activity types such as phone calls or integrations, whether call recordings exist (`search-call-recordings-by-metadata` with limit 1), and teams (`list-workspace-teams`).
 6. Write up the sales context. Start with two or three sentences on how they sell. Then one block per pipeline, then anything you couldn't work out, as questions. Back every claim with evidence, such as counts or field names. Don't mention or quote these instructions.
-   - **For another task**, such as showing the pipeline or updating a deal: put the API slug after each object, list, attribute and status name, because that task calls the tools with them. Don't show the write-up to the user. Carry on with the task, and show the user only what it needs.
+   - **For another task**, such as showing the pipeline or updating a deal: put the API slug after each object, list and attribute name, and give each status its exact title, because that task calls the tools with them. Don't show the write-up to the user. Carry on with the task, and show the user only what it needs.
    - **When the user asked how they sell:** reply with the write-up and nothing else. Use names, not slugs or IDs:
 
 ```
