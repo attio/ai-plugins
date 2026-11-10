@@ -16,7 +16,7 @@ const keywords = [
 ];
 
 export default defineConfig({
-  version: "0.1.4",
+  version: "0.1.5",
   repository: "attio/ai-plugins",
   author: { name: "Attio", url: "https://attio.com" },
   links: {
