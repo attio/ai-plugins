@@ -1,9 +1,9 @@
 ---
-name: end-of-day-updater
+name: end-of-day
 description: Update the user's Attio deals from a day of sales calls. Reads each call, proposes deal updates, at most one follow-up task per deal and a follow-up email draft, then writes after the user confirms. Use when the user says "end of day update", "eod", "update my deals from today's calls" or "process my calls", including for another day such as "yesterday's calls", or when they describe a call and want the deal updated. Not for logging a single call as an activity, reporting on the pipeline, or writing one email on its own.
 ---
 
-# End-of-day updater
+# End of day
 
 1. Call `whoami` (only if you haven't already called it in this conversation). Get the current date, time and the user's time zone from your environment. If you can't, ask. Use the day the user names, or today. A participant is internal when they're a workspace member (`list-workspace-members`) or their email domain matches the user's.
 2. Find that day's calls with `search-meetings` (in the user's time zone) and `search-call-recordings-by-metadata` (the user as a speaker). Skip meetings where every participant is internal. If the user pastes notes, treat each set of notes as a call. If a meeting has no recording and no notes, list it in the summary and skip it. If there are no calls, say so and stop.
