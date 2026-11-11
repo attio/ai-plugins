@@ -5,7 +5,7 @@ description: Create the follow-up task in Attio for one deal, company or person.
 
 # Create follow-up task
 
-A record has one open follow-up task, covering everything to do next on it.
+Each person has at most one open follow-up task on a record, covering everything they do next on it.
 
 1. Work out the next actions, such as sending something, calling someone or chasing a decision:
    - Anything the user promised.
@@ -20,7 +20,7 @@ A record has one open follow-up task, covering everything to do next on it.
    - Move a date you work out off weekends to the Friday before, and out of the end-of-year break (24 December to 1 January) to the last working day before. Keep a date the user gives.
    - If you can't tell when, ask. Never leave a task undated.
 3. Find the record: the deal if there is one, otherwise the company, otherwise the person. Use `search-records`, and ask if more than one matches. A deal that's a list entry can't be linked, so use the record the entry is on, such as its company. Assign the task to the user (call `whoami` only if you haven't already) unless they name a teammate. Find a teammate with `list-workspace-members`.
-4. Check the record's open tasks with `list-tasks` (`linked_record_object`, `linked_record_id`, `is_completed: false`), paging with `offset`. If one is already open, don't add a second:
+4. Check the record's open tasks with `list-tasks` (`linked_record_object`, `linked_record_id`, `is_completed: false`), paging with `offset`. Leave a teammate's open task alone unless the user asks: don't change, replace or mark it done. Mention it, and create the user's task only for the actions it doesn't cover. If the user's own task is already open, don't add a second:
    - If it's right, say so and stop.
    - If it covers the actions but the date or assignee is wrong, change them.
    - Otherwise, offer to replace it with one task covering its actions that are still to do and the new ones. Task wording can't be edited, so replacing means marking it done and creating the new task. The user can keep both instead.

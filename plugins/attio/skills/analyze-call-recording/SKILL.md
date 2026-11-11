@@ -20,7 +20,7 @@ In Attio, a meeting is a calendar event and a call recording is a transcript att
 
 Add a time range whenever the user gives one. Results are newest first.
 
-If more than one recording could match, list the candidates with title and date, and ask which one. Metadata search returns no titles, so get them from `search-meetings` over the same time range. Neither search returns participants. Analyzing the wrong call wastes more of the user's time than one question does.
+If more than one recording could match, list the candidates with title and date, and ask which one. Metadata search returns no titles, so get them from `search-meetings` over the same time range. Analyzing the wrong call wastes more of the user's time than one question does.
 
 If the meeting has no recording, say so. Calls logged from a dialer are activity records, not call recordings, and this skill does not cover them.
 
