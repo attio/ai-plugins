@@ -1,11 +1,11 @@
 ---
 name: create-follow-up-task
-description: Create the follow-up task in Attio for one deal, company or person. One task per record, covering everything to do next, for the right person, due when they next have to act, and without duplicating an open task. Writes only after the user confirms. Use when the user asks to add a task, reminder or follow-up ("remind me to send Leif the quote on Friday", "add a task to chase Basepoint"), or when another skill needs a follow-up task. A workflow that needs tasks for several records uses this once per record.
+description: Create the follow-up task in Attio for one deal, company or person. One open task per person on each record, covering everything they do next, due when they next have to act, and without duplicating an open task. Writes only after the user confirms. Use when the user asks to add a task, reminder or follow-up ("remind me to send Leif the quote on Friday", "add a task to chase Basepoint"), or when another skill needs a follow-up task. A workflow that needs tasks for several records uses this once per record.
 ---
 
 # Create follow-up task
 
-A record has one open follow-up task, covering everything to do next on it.
+Each person has at most one open follow-up task on a record, covering everything they do next on it.
 
 1. Work out the next actions, such as sending something, calling someone or chasing a decision:
    - Anything the user promised.
@@ -20,9 +20,9 @@ A record has one open follow-up task, covering everything to do next on it.
    - Move a date you work out off weekends to the Friday before, and out of the end-of-year break (24 December to 1 January) to the last working day before. Keep a date the user gives.
    - If you can't tell when, ask. Never leave a task undated.
 3. Find the record: the deal if there is one, otherwise the company, otherwise the person. Use `search-records`, and ask if more than one matches. A deal that's a list entry can't be linked, so use the record the entry is on, such as its company. Assign the task to the user (call `whoami` only if you haven't already) unless they name a teammate. Find a teammate with `list-workspace-members`.
-4. Check the record's open tasks with `list-tasks` (`linked_record_object`, `linked_record_id`, `is_completed: false`), paging with `offset`. If one is already open, don't add a second:
+4. Check the record's open tasks with `list-tasks` (`linked_record_object`, `linked_record_id`, `is_completed: false`), paging with `offset`. Leave tasks assigned to anyone other than the assignee alone unless the user asks: don't change, replace or mark them done. Mention any that cover the same actions, and leave those actions out of the new task. If the assignee already has an open task on the record, don't add a second:
    - If it's right, say so and stop.
-   - If it covers the actions but the date or assignee is wrong, change them.
+   - If it covers the actions but the date is wrong, change it.
    - Otherwise, offer to replace it with one task covering its actions that are still to do and the new ones. Task wording can't be edited, so replacing means marking it done and creating the new task. The user can keep both instead.
 5. Write the task. If the message gives you the wording, use it, adding the company name at the start if it's missing. Otherwise, start with the company name, then each action as a verb and exactly what and for whom, under 15 words each and separated by semicolons. Name the thing, such as "the SSO answer and 120-seat quote".
 6. Show it and ask. Include the Replaces line only when offering to replace an open task, and the Updates line only when changing one's date or assignee:
