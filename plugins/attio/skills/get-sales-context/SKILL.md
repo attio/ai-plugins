@@ -7,8 +7,8 @@ description: Work out how the user sells in Attio, so you or another skill can w
 
 Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them.
 
-1. Call `whoami` (only if you haven't already called it in this conversation). List everything with `list-objects`, `list-lists` and `list-activities`, paging until there are no more. If a tool rejects your page size, retry with a smaller one.
-2. Find the pipelines. A pipeline is usually an object with a status attribute. Some workspaces have hundreds of objects, so don't read them all. Read the attributes of `deals`, companies and people, and of the objects whose names suggest sales, such as opportunities, accounts, subscriptions, users or workspaces, with `list-attribute-definitions`. Some teams run a pipeline as a list instead, so also check lists whose names suggest sales with `list-list-attribute-definitions`. Read others only if that finds no sales pipeline, or the task needs one you haven't found. For each pipeline, note:
+1. Call `whoami` (only if you haven't already called it in this conversation). List everything with `list-objects`, `list-lists` and `list-activities` in parallel, paging until there are no more. If a tool rejects your page size, retry with a smaller one.
+2. Find the pipelines. A pipeline is usually an object with a status attribute. Some workspaces have hundreds of objects, so don't read them all. Read the attributes of `deals`, companies and people, and of the objects whose names suggest sales, such as opportunities, accounts, subscriptions, users or workspaces, with `list-attribute-definitions`. Some teams run a pipeline as a list instead, so also check lists whose names suggest sales with `list-list-attribute-definitions`. Read these attributes in parallel. Read others only if that finds no sales pipeline, or the task needs one you haven't found. For each pipeline, note:
    - what it sits on: its own object, or a list on companies, people or deals
    - its stages in order, and which mean won, lost, churned, renewed or paused
    - which fields play these roles, whatever they're called: value (a currency, such as contract value or ARR), close date, owner, likelihood (a rating, probability or forecast), next step, lost reason
@@ -19,7 +19,7 @@ Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them
    - **Product-led:** trial stages, or `users` or `workspaces` objects that have records, with plan, seats or usage fields.
    - **Not sales:** recruiting, fundraising, partnerships or support. Name these, but leave them out of the sales context.
      If you can't tell what a pipeline is for, list it under questions. Ask the user only if the task you're doing depends on it.
-5. Check how the team works: activity types such as phone calls or integrations, whether call recordings exist (`search-call-recordings-by-metadata` with limit 1), and teams (`list-workspace-teams`).
+5. Check how the team works: activity types such as phone calls or integrations, whether call recordings exist (`search-call-recordings-by-metadata` with limit 1), and teams (`list-workspace-teams`), with these checks in parallel.
 6. Write up the sales context. Start with two or three sentences on how they sell. Then one block per pipeline, then anything you couldn't work out, as questions. Back every claim with evidence, such as counts or field names. Don't mention or quote these instructions.
    - **For another task**, such as showing the pipeline or updating a deal: put the API slug after each object, list and attribute name, and give each status its exact title, because that task calls the tools with them. Don't show the write-up to the user. Carry on with the task, and show the user only what it needs.
    - **When the user asked how they sell:** reply with the write-up and nothing else. Use names, not slugs or IDs:
@@ -29,7 +29,7 @@ People sign up into Workspaces (1,240 records, with Plan and Seats). Sales works
 
 Opportunities · object · 312 records, 87 open · you own 23
   Stages: Discovery → Demo → Trial → Proposal → Closed won · Closed lost
-  Value: Amount (USD) · Close date: Expected close · Likelihood: Forecast (select) · Owner: AE
+  Value: [field] · Owner: [field] · [other useful fields]
 Not sales: Hiring (list on people)
 Barely used: Deals object (2 records)
 
