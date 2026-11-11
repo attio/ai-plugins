@@ -28,9 +28,9 @@ These are signs, not rules. One on its own can be fine. Several together make a 
 - **Chatbot replies:** "Great question!", "Absolutely!", "Certainly!", "I hope this helps", "Would you like…", "Let me know if you have any questions".
 - **Stock closers:** "Don't hesitate to reach out", "Looking forward to hearing from you".
 - **Empty enthusiasm:** "excited to", "thrilled", "great opportunity", "game-changer".
-- **Jargon:** "leverage", "synergies", "unlock", "seamless", "holistic", "streamline", "utilize", "deep dive", "align".
+- **Buzzwords:** "leverage", "synergies", "unlock", "seamless", "holistic", "streamline", "utilize", "deep dive", "align".
 - **Inflated words:** "pivotal", "crucial", "vital", "testament", "tapestry", "landscape", "delve", "robust", "showcase", "underscore", "foster".
-- **Newer model words:** "multifaceted", "dependable", "steady", "quietly", "prioritize", "practical", "clearer", "matters", "universally".
+- **Fluff:** "multifaceted", "dependable", "steady", "quietly", "prioritize", "practical", "clearer", "matters", "universally".
 - **Filler:** "in order to" (use "to"), "due to the fact that" ("because"), "it's important to note that", "additionally", "furthermore", "in terms of".
 - **Hedges:** "could potentially", "based on the information available", "it seems that".
 
