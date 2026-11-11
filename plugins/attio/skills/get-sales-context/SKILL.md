@@ -29,7 +29,7 @@ People sign up into Workspaces (1,240 records, with Plan and Seats). Sales works
 
 Opportunities · object · 312 records, 87 open · you own 23
   Stages: Discovery → Demo → Trial → Proposal → Closed won · Closed lost
-  Value: Amount (USD) · Close date: Expected close · Likelihood: Forecast (select) · Owner: AE
+  Value: [field] · Owner: [field] · [other useful fields]
 Not sales: Hiring (list on people)
 Barely used: Deals object (2 records)
 
