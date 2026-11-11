@@ -9,9 +9,9 @@ description: Prepare the user for an upcoming call or meeting with a prospect or
    - If the user names a meeting, time, company or person, search the next 14 days with `search-meetings`. Match a meeting by its title, a time by the next meeting at that time, a company with `related_record_object` and `related_record_ids`, or a person with `participant_email_addresses`. Find records with `search-records`.
    - If they ask about their next call, search the next 7 days with their email address in `participant_email_addresses`, and take the first meeting with a prospect or customer: one whose title names a company, or that's linked to a company or deal.
    - If more than one meeting could match, list them with title and time, and ask which one. If none matches, say so and stop. If the meeting is internal, say this skill is for calls with prospects and customers, and stop.
-2. Find what the meeting is about. Work out the company from the meeting title and the people you searched for (`search-records`). If the company has more than one open deal, use the one linked to the meeting: search the meeting's time with `related_record_object` and `related_record_ids` set to the deal, and if the meeting comes back, it's linked. Ask only if none is. Then use the `get-deal-context` skill for that deal, or for the company if it has no open deal.
+2. Find what the meeting is about. Meetings are linked to their participants' companies, but `search-meetings` doesn't list those links, so check a candidate instead. If the user named a company or person, use that company. Otherwise, look for a company named in the meeting title with `search-records`, and confirm the meeting is linked to it: search the meeting's time with `related_record_object` and `related_record_ids` set to the company, and if the meeting comes back, it's linked. If you can't confirm a company, ask the user which one it is. Use the `get-deal-context` skill for that company. If it has more than one open deal, use the one linked to the meeting: search the meeting's time with `related_record_object` and `related_record_ids` set to the deal, and if the meeting comes back, it's linked. Ask only if none is.
 3. Work out who's attending. Check the deal's people, people with the company's email domain (`search-records`), and anyone from another company who spoke on the calls `get-deal-context` read, such as a partner (find their records by name). Check up to 10, in parallel: for each, search the meeting's time with `participant_email_addresses` set to their email, and if the meeting comes back, they're attending. Note each attendee's job title, and use their email address if their record has no name.
-4. Plan the call from what `get-deal-context` found. Use the user's sales framework if they name one, such as MEDDICC, but don't impose one.
+4. Plan the call from what `get-deal-context` found, using where the deal stands and its open commitments as they are. Use the user's sales framework if they name one, such as MEDDICC, but don't impose one.
    - **Goals:** one to three things this call should achieve, from the meeting title, where the deal stands and what's still unknown.
    - **Questions to ask:** the gaps this call could fill, and who in the meeting can answer each.
    - **Watch out for:** the deal's risks, plus anything about this meeting, such as someone who decides but isn't invited.
@@ -19,7 +19,7 @@ description: Prepare the user for an upcoming call or meeting with a prospect or
 
 ```
 **[Meeting title]** · [day, date, time]
-**Attending:** [their people, with job titles] · you · others may join
+**Attending:** [their people, with job titles and roles] · you · others may join
 **Deal:** [name] · [stage] · [value] · [other useful fields]
 
 ## Where things stand
