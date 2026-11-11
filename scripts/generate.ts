@@ -7,7 +7,7 @@ import { loadConfig } from "./lib/config.ts";
 import { buildOutputs, mcpFiles, ROOT_README } from "./lib/manifests.ts";
 import { error, report, ROOT, type Diagnostic } from "./lib/report.ts";
 import { loadAgentPluginSchemas } from "./lib/schemas.ts";
-import { loadSkills } from "./lib/skills.ts";
+import { loadSkills, skillProblems } from "./lib/skills.ts";
 
 async function readOptional(path: string): Promise<string | undefined> {
   try {
@@ -27,6 +27,11 @@ const skills = await loadSkills(
 const readme = await readFile(join(ROOT, ROOT_README), "utf8");
 
 const diagnostics: Diagnostic[] = [];
+for (const skill of skills) {
+  for (const message of skillProblems(skill)) {
+    diagnostics.push(error(`plugins/${skill.plugin}/skills/${skill.name}/SKILL.md`, message));
+  }
+}
 let outputs: Map<string, string>;
 try {
   outputs = buildOutputs(config, skills, readme);
