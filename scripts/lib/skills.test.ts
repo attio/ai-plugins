@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { fixtureRepo, skillFile } from "./fixtures.ts";
-import { loadSkills, parseSkillFile, summary } from "./skills.ts";
+import { loadSkills, parseSkillFile, skillProblems, summary } from "./skills.ts";
 
 describe("parseSkillFile", () => {
   it("parses frontmatter", () => {
@@ -20,6 +20,26 @@ describe("parseSkillFile", () => {
     for (const text of ["# Skill\n", "---\nname: a\n", "---\ndescription: Use when: x\n---\n", "---\n- a\n---\n"]) {
       assert.equal(parseSkillFile(text), undefined);
     }
+  });
+});
+
+describe("skillProblems", () => {
+  const skill = (frontmatter: Record<string, unknown> | undefined) => ({ plugin: "crm", name: "intro", frontmatter });
+
+  it("accepts a name that matches the folder and a description", () => {
+    assert.deepEqual(skillProblems(skill({ name: "intro", description: "Does a thing." })), []);
+  });
+
+  it("reports frontmatter that isn't valid YAML", () => {
+    const frontmatter = parseSkillFile("---\nname: intro\ndescription: Writes a brief: where things stand\n---\n");
+    assert.deepEqual(skillProblems(skill(frontmatter)), ["frontmatter is missing or isn't valid YAML"]);
+  });
+
+  it("reports a wrong name and a missing description", () => {
+    assert.deepEqual(skillProblems(skill({ name: "other" })), [
+      'name must be "intro", the folder name',
+      "description is missing",
+    ]);
   });
 });
 

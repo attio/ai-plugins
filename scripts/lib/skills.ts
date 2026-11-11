@@ -50,6 +50,17 @@ export async function loadSkills(root: string, plugins: readonly string[]): Prom
   return skills;
 }
 
+/** Problems that stop a client from loading the skill's name and description. */
+export function skillProblems(skill: Skill): string[] {
+  const { frontmatter } = skill;
+  if (frontmatter === undefined) return ["frontmatter is missing or isn't valid YAML"];
+  const problems: string[] = [];
+  if (frontmatter["name"] !== skill.name) problems.push(`name must be "${skill.name}", the folder name`);
+  const description = frontmatter["description"];
+  if (typeof description !== "string" || description.trim() === "") problems.push("description is missing");
+  return problems;
+}
+
 /** First sentence of a skill description, for tables. */
 export function summary(description: string): string {
   const text = description.replace(/\s+/g, " ").trim();
