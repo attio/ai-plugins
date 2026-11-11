@@ -1,6 +1,6 @@
 ---
 name: prepare-for-call
-description: Prepare the user for an upcoming call or meeting with a prospect or customer. Finds the meeting, the deal and who's attending, reads the past calls, emails, notes and open tasks, and writes a short brief: where things stand, open commitments, goals for the call, questions to ask and risks. Read-only. Use when the user asks to prepare for, prep or get ready for a call or meeting ("prep me for my 2pm", "what do I need to know before tomorrow's demo?"). Not for analyzing a past call, writing a follow-up email, or updating deals.
+description: Prepare the user for an upcoming call or meeting with a prospect or customer. Finds the meeting, the deal and who's attending, reads the past calls, emails, notes and open tasks, and writes a short brief covering where things stand, open commitments, goals for the call, questions to ask and risks. Read-only. Use when the user asks to prepare for, prep or get ready for a call or meeting ("prep me for my 2pm", "what do I need to know before tomorrow's demo?"). Not for analyzing a past call, writing a follow-up email, or updating deals.
 ---
 
 # Prepare for call
