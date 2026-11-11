@@ -31,6 +31,7 @@ workspace access, the [Attio MCP server](https://docs.attio.com/mcp/overview).
 | `attio`     | [`get-sales-context`](plugins/attio/skills/get-sales-context/SKILL.md)           | Work out how the user sells in Attio, so you or another skill can work in their workspace.                                                                                                |
 | `attio`     | [`humanize-text`](plugins/attio/skills/humanize-text/SKILL.md)                   | Edit a draft so it reads as written by a person, not an AI, without changing what it says.                                                                                                |
 | `attio`     | [`onboarding`](plugins/attio/skills/onboarding/SKILL.md)                         | Sets up the Attio plugin for a new user.                                                                                                                                                  |
+| `attio`     | [`prepare-for-call`](plugins/attio/skills/prepare-for-call/SKILL.md)             | Prepare the user for an upcoming call or meeting with a prospect or customer.                                                                                                             |
 | `attio-dev` | [`attio-apps`](plugins/attio-dev/skills/attio-apps/SKILL.md)                     | Build, modify, debug or review Attio apps built with the Attio App SDK.                                                                                                                   |
 
 <!-- END GENERATED: skills -->
