@@ -1,9 +1,9 @@
 ---
-name: humanize
+name: humanize-text
 description: Edit a draft so it reads as written by a person, not an AI, without changing what it says. Removes stock phrases, inflated words, formulaic patterns and chat formatting, and keeps the writer's own habits. Use when the user asks to humanize text, or to make it sound more natural, less like AI or more like them, or when another skill, such as draft-follow-up-email, has drafted something the user will send under their name. Not for writing a first draft, checking facts or translating.
 ---
 
-# Humanize
+# Humanize text
 
 Edit the draft so its reader believes the writer wrote it. Change how it says things, never what it says.
 
