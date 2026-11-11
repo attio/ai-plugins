@@ -10,7 +10,7 @@ description: Show the user's open Attio deals, from whichever object or list hol
 3. Get the person's open records with `list-records` (for an object) or `list-records-in-list` (for a list), filtered by owner. Page with `offset` until there are no more. Work out the counts and totals yourself.
 4. Find what's next for each deal:
    - `list-tasks` for the person's open tasks. Page through all of them. Match tasks to deals by linked record, or for a list entry, by its parent record. For a deal none of them match, check for a teammate's task: `list-tasks` with the deal, or a list entry's parent record, as `linked_record_object` and `linked_record_id`, `is_completed: false` and `limit: 1`.
-   - `search-meetings` for the next 30 days, paging through them. It doesn't return a meeting's linked records, so if there are any meetings, search again for each deal's company with `related_record_object` and `related_record_ids` to match them.
+   - `search-meetings` for the next 30 days, paging through them. It doesn't return a meeting's linked records, so if there are any meetings, match them with `related_record_object` and `related_record_ids`: search for each deal's own record first (for a list entry, its parent record), then, if that finds nothing, for the deal's company.
 5. Apply what the user asked for, such as one stage, closing this month, or over a value. If they ask which deals have gone quiet, use the interaction attributes on the deal or its company, such as last interaction, and say what those cover. If they ask for something the workspace has no attribute for, such as a close date, say so and show the full pipeline.
 6. List a deal under "Needs attention" when:
    - it has no open task and no meeting in the next 30 days
