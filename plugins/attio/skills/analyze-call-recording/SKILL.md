@@ -20,7 +20,7 @@ In Attio, a meeting is a calendar event and a call recording is a transcript att
 
 Add a time range whenever the user gives one. Results are newest first.
 
-If more than one recording could match, list the candidates with title, date and participants, and ask which one. Metadata search returns no titles, so get them from `search-meetings` over the same time range. Analyzing the wrong call wastes more of the user's time than one question does.
+If more than one recording could match, list the candidates with title and date, and ask which one. Metadata search returns no titles, so get them from `search-meetings` over the same time range. Neither search returns participants. Analyzing the wrong call wastes more of the user's time than one question does.
 
 If the meeting has no recording, say so. Calls logged from a dialer are activity records, not call recordings, and this skill does not cover them.
 
@@ -28,8 +28,8 @@ If the meeting has no recording, say so. Calls logged from a dialer are activity
 
 Fetch the recording with `get-call-recording` and read all of it before you form a view. The call type often becomes clear late, for example when pricing comes up near the end.
 
-- If `status` is not complete, tell the user the transcript is partial.
-- Work out which speakers are on the user's side (`whoami`, `list-workspace-members`) and which are external.
+- Analyze only recordings with `status: finished`. If it's `preparing` or `in-progress`, tell the user the recording isn't finished yet and to try again later. If it's `failed`, say the recording failed. Then stop.
+- Work out which speakers are on the user's side (`whoami`, `list-workspace-members`) and which are external. The searches don't return participants, so use the transcript's speakers. People who didn't speak won't appear. If you found the call by searching for a speaker, check that they speak in it: the search can return calls where they never speak.
 - Transcription garbles names of people, companies and products. Infer the intended word from context, and do not quote the error as fact.
 
 ## 3. Classify the call

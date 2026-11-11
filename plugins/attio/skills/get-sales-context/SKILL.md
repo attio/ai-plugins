@@ -7,12 +7,12 @@ description: Work out how the user sells in Attio, so you or another skill can w
 
 Don't assume a `deals` object, a `stage` attribute or a `value` field. Find them.
 
-1. Call `whoami` (only if you haven't already called it in this conversation). List everything with `list-objects`, `list-lists` and `list-activities`, paging until there are no more.
+1. Call `whoami` (only if you haven't already called it in this conversation). List everything with `list-objects`, `list-lists` and `list-activities`, paging until there are no more. If a tool rejects your page size, retry with a smaller one.
 2. Find the pipelines. A pipeline is usually an object with a status attribute. Some workspaces have hundreds of objects, so don't read them all. Read the attributes of `deals`, companies and people, and of the objects whose names suggest sales, such as opportunities, accounts, subscriptions, users or workspaces, with `list-attribute-definitions`. Some teams run a pipeline as a list instead, so also check lists whose names suggest sales with `list-list-attribute-definitions`. Read others only if that finds no sales pipeline, or the task needs one you haven't found. For each pipeline, note:
    - what it sits on: its own object, or a list on companies, people or deals
-   - its stages in order, and which mean won, lost or paused
+   - its stages in order, and which mean won, lost, churned, renewed or paused
    - which fields play these roles, whatever they're called: value (a currency, such as contract value or ARR), close date, owner, likelihood (a rating, probability or forecast), next step, lost reason
-3. Check which pipelines are actually used. With `run-basic-report`, count records or entries by stage and by owner, and sum the value. Report sparsely populated pipelines separately. Record count alone doesn't show whether they're used. Name owners with `list-workspace-members`. Owners who aren't listed are former members.
+3. Check which pipelines are actually used. With `run-basic-report`, count records or entries by stage and by owner, and sum the value. Report sparsely populated pipelines separately. Record count alone doesn't show whether they're used. Run reports one at a time, not in parallel: they have a much lower rate limit than other tools. If one is rate limited, wait until the retry time it gives and try again. Name owners with `list-workspace-members`. Owners who aren't listed are former members.
 4. Decide what each pipeline is for, from its name, what it sits on, its stages and its fields:
    - **New business:** stages such as qualification, demo, proposal and negotiation.
    - **Account management:** renewal, expansion, health, ARR or churn.
