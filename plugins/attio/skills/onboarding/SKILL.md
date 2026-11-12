@@ -1,6 +1,7 @@
 ---
 name: onboarding
-description: Get a new user started with the Attio plugin. Checks Attio is connected, reads their workspace and does something useful straight away, such as a short brief for their next meeting, their recent calls, or the deals that need attention, then offers the next step. Read-only. Use when the user has just installed the plugin, asks to set up or get started with Attio, or asks what they can do with Attio or this plugin. Not for setting up the workspace itself, such as creating objects, lists, stages or fields, importing data or inviting teammates.
+description: Get a new user started with the Attio plugin. Checks Attio is connected, reads their workspace and does something useful straight away, such as a short brief for their next meeting, their recent calls, or the deals that need attention, then offers the next step. Read-only.
+disable-model-invocation: true
 ---
 
 # Onboarding
