@@ -25,7 +25,7 @@ An activity is a record of something that happened, such as a call, shown on the
 **With:** [participants] · **Linked to:** [records]
 **[Attribute]:** [value, or "not set"]
 
-[Question for each required attribute you don't know.] Log it? You can fill in anything that's not set.
+[Question for each required attribute you don't know.] Log it, or change anything first?
 ```
 
 6. **Write after the user says yes.** Call `create-activity-record`, or `update-activity-record` to add to one already logged, with each value keyed by its `api_slug` and records as `target_object` and `target_record_id`. Confirm in one line that it's on the timeline of the records it's linked to. If the user said they need to do something next, offer to add a follow-up task.
