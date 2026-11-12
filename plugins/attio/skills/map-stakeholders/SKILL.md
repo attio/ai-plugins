@@ -1,6 +1,6 @@
 ---
 name: map-stakeholders
-description: Map who's involved in one deal in Attio and how they relate to each other. Works out each person's role, such as who decides, champions or could block it, who reports to or works with whom, and who on the user's team knows them, from the deal's calls, meetings, emails, notes and activities. Read-only. Use when the user asks who the stakeholders or decision makers are on a deal or account, who they should talk to, or whether they're relying on one person ("map the stakeholders on the Basepoint deal", "who's the decision maker at Kestrel?", "am I single-threaded on this deal?"), or when another skill needs the buying group. Not for the deal's history, listing all of a company's contacts, or updating records.
+description: Map who's involved in one deal in Attio and how they relate to each other. Shows each person's role, such as who decides, champions or could block it, who reports to whom, and which teammate knows them best. Reads the deal's calls, meetings, emails, notes and activities. Read-only. Use when the user asks who the stakeholders or decision makers are on a deal or account, who they should talk to, or whether they're relying on one person ("map the stakeholders on the Basepoint deal", "who's the decision maker at Kestrel?", "am I single-threaded on this deal?"), or when another skill needs the buying group. Not for the deal's history, listing all of a company's contacts, or updating records.
 ---
 
 # Map stakeholders
@@ -39,7 +39,7 @@ Attio holds only part of what happened on a deal. Back every role and link with 
 
    Then read the three most recent meetings that were recorded, preferring the deal's. Read every finished recording of each with `get-call-recording`.
 
-   Find a record for everyone these add:
+   Match anyone new from this evidence to an Attio record:
    - **Email addresses:** match them to the people you have. Look up the rest with `list-records` on people, filtered by email address.
    - **Speakers, and people mentioned as part of the deal**, such as "our CFO, Daniel, signs everything off" or "I'll loop in legal": match them by name to the people you have, or else with `search-records`.
      - Transcription garbles names, so use context, such as their company or role.
@@ -51,7 +51,7 @@ Attio holds only part of what happened on a deal. Back every role and link with 
    Then sort people into two groups:
    - **Involved:** linked to the deal, or took part in or was mentioned in a call, meeting, email, activity or note about it.
      - Anything linked to another deal is about that deal.
-     - Anything linked only to the company is about this deal only if it includes someone linked to the deal, or its title, subject or content is about it. If that leaves nothing, use all of it and say so.
+     - Anything linked only to the company is about this deal only if it includes someone linked to the deal, or its title, subject or content is about it. If none of the company's evidence ties to this deal, count all of it as about this deal, and say so.
    - **Others at the company:** everyone else at the company with recent contact. It may be about another deal, support or a renewal.
 
 4. **Read what Attio knows about each person.** Read anyone you haven't already with `get-records-by-ids`, in one call. Note their job title, company, strongest connection (a teammate), connection strength, last and next interaction, and any attributes from step 2.
@@ -70,15 +70,15 @@ Attio holds only part of what happened on a deal. Back every role and link with 
    - **Gaps:** what's missing or at risk among the customer's people involved in this deal. For example:
      - only one person is engaged
      - it isn't clear who decides, or you found no contact with them
-     - the champion or decider has had no interaction for three weeks
+     - the champion or decision maker has had no interaction for three weeks
      - a promise or task for someone involved is overdue
      - the champion is leaving
      - a recent meeting has no recording or notes, so the map can't reflect it
      - people are involved but not linked to the deal, if the pipeline has an attribute for its people
 
-     A meeting booked with the decider isn't a gap: say it's booked. Say there's no recorded interaction in Attio only when the attribute exists and is empty. Say something went unanswered only if you found the emails.
+     A meeting booked with the decision maker isn't a gap: say it's booked. Say there's no recorded interaction in Attio only when the attribute exists and is empty. Say something went unanswered only if you found the emails.
 
-   - **Next:** the one person to reach next, why, and the user's team's strongest Attio connection to them. Take booked meetings into account. If you mapped a closed deal, leave this out, unless the company has open work, such as a renewal or another open deal. Then base it on that work.
+   - **Next:** the one person to reach next, why, and the teammate with the strongest Attio connection to them. Take booked meetings into account. If you mapped a closed deal, leave this out, unless the company has open work, such as a renewal or another open deal. Then base it on that work.
 6. **Reply.** If this is part of another skill's work, don't show the map. Keep each person's record ID, roles with sources, and whether they're involved, and carry on with that skill. Otherwise, reply with the map and nothing else:
    - Start with one line that answers what the user asked, such as whether they're relying on one person, or who decides.
    - Nest a person under who they report to only when step 5 found evidence for it, and only under someone listed.
