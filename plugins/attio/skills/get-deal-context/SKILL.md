@@ -15,7 +15,7 @@ description: Gather what's happening on one deal in Attio. Reads the deal's fiel
    - **Emails:** `search-emails-by-metadata` with the company's domain over the last 30 days. Read up to five of the latest with `get-email-content`. If an email's content can't be retrieved, use its subject and snippet.
    - **Notes:** `search-notes-by-metadata` for the deal and the company, then `get-note-body` for up to three of the latest.
    - **Tasks:** `list-tasks` for all open tasks linked to the deal or the company.
-   - **Upcoming meetings:** `search-meetings` for the next 30 days with `related_record_object` and `related_record_ids` set to the deal, then the company if that finds nothing.
+   - **Upcoming meetings:** `search-meetings` for the next 30 days with `related_record_object` and `related_record_ids` set to the deal, then the company if that finds nothing. Note who's invited from each meeting's `participants`.
 4. Work out from what you read. Distinguish facts about this deal from information about the company as a whole.
    - **Where it stands:** what they need, where the deal is, and what's changed recently.
    - **People:** who's involved on their side and their role, such as who decides, who uses it and who could block it, including people from other companies, such as a partner.
