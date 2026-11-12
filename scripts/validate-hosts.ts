@@ -8,9 +8,10 @@ import { execFileSync } from "node:child_process";
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { parse } from "yaml";
 import { loadConfig } from "./lib/config.ts";
 import { ROOT } from "./lib/report.ts";
-import { loadSkills } from "./lib/skills.ts";
+import { loadSkills, type Skill } from "./lib/skills.ts";
 
 const requireAll = process.argv.includes("--require");
 const config = await loadConfig(ROOT);
@@ -63,8 +64,8 @@ async function localMarketplace(work: string, file: string): Promise<string> {
 }
 
 /** Finds skills missing from the client's output, using qualified names when required. */
-function missingSkills(output: string, plugin: string, qualified: boolean): string[] {
-  return skills
+function missingSkills(output: string, plugin: string, qualified: boolean, expected = skills): string[] {
+  return expected
     .filter((s) => s.plugin === plugin)
     .map((s) => (qualified ? `${plugin}:${s.name}` : s.name))
     .filter((name) => !new RegExp(`(^|[^\\w:-])${name}([^\\w-]|$)`, "m").test(output));
@@ -107,10 +108,21 @@ async function claude(): Promise<void> {
   }
 }
 
+/** Codex leaves a skill out of the model's prompt when its `agents/openai.yaml` turns off implicit invocation. */
+async function implicitInCodex(skill: Skill): Promise<boolean> {
+  const file = join(ROOT, "plugins", skill.plugin, "skills", skill.name, "agents", "openai.yaml");
+  const text = await readFile(file, "utf8").catch(() => undefined);
+  if (text === undefined) return true;
+  const settings = parse(text) as { policy?: { allow_implicit_invocation?: unknown } } | null;
+  return settings?.policy?.allow_implicit_invocation !== false;
+}
+
 async function codex(): Promise<void> {
   const work = await mkdtemp(join(tmpdir(), "attio-codex-"));
   const env = { CODEX_HOME: join(work, "home") };
   await mkdir(env.CODEX_HOME, { recursive: true });
+  const flags = await Promise.all(skills.map(implicitInCodex));
+  const implicit = skills.filter((_, i) => flags[i]);
   try {
     const dir = await localMarketplace(work, ".agents/plugins/marketplace.json");
     step("codex plugin marketplace add", () => run("codex", ["plugin", "marketplace", "add", dir], env));
@@ -137,10 +149,10 @@ async function codex(): Promise<void> {
         }
       }
     });
-    // Codex lists skills in the model's prompt as `- <plugin>:<skill>: <description>`.
+    // Codex lists skills in the model's prompt as `- <plugin>:<skill>: <description>`, except explicit-only ones.
     step("codex loads every skill", () => {
       const prompt = run("codex", ["debug", "prompt-input"], env);
-      const missing = config.plugins.flatMap((p) => missingSkills(prompt, p.name, true));
+      const missing = config.plugins.flatMap((p) => missingSkills(prompt, p.name, true, implicit));
       if (missing.length > 0) throw new Error(`missing: ${missing.join(", ")}`);
     });
   } finally {
