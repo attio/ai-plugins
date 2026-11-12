@@ -56,7 +56,8 @@ Attio holds only part of what happened on a deal. Back every role and link with 
 
 4. **Read what Attio knows about each person.** Read anyone you haven't already with `get-records-by-ids`, in one call. Note their job title, company, strongest connection (a teammate), connection strength, last and next interaction, and any attributes from step 2.
    - Interaction dates come as `HH:mm DD/MM/YYYY`, so `03/11/2026` is 3 November. They're in UTC, like other timestamps without a time zone, such as on activities. Convert them to the user's time zone.
-   - Some plans hide interaction and connection attributes. If people records have none at all, take last contact from the latest evidence you found, and leave out strongest connection.
+   - A calendar interaction means they were on a meeting invite, which doesn't prove they attended, so show these dates as "last interaction".
+   - Some plans hide interaction and connection attributes. If people records have none at all, take last interaction from the latest evidence you found, and leave out strongest connection.
 5. **Work out the map.** Give a source and date for every role and link. A source is a short quote, something they did or the field it came from, such as "nothing gets signed before Dana's reviewed it" (call, 3 Nov) or "set up the demo" (meeting, 21 Oct). If you have no source, say unknown.
    - **Emails:** metadata shows who took part, not who has authority or who introduced whom. If an email would settle that, such as one asking for sign-off, read it with `get-email-content`, up to five. If it can't be read, use its subject and summary.
    - **Framework:** use the user's sales framework if they name one, such as MEDDICC.
@@ -77,11 +78,11 @@ Attio holds only part of what happened on a deal. Back every role and link with 
 
      A meeting booked with the decider isn't a gap: say it's booked. Say there's no recorded interaction in Attio only when the attribute exists and is empty. Say something went unanswered only if you found the emails.
 
-   - **Next:** the one person to reach next, why, and the user's team's strongest Attio connection to them. Take booked meetings into account. Leave this out for a closed deal.
+   - **Next:** the one person to reach next, why, and the user's team's strongest Attio connection to them. Take booked meetings into account. If you mapped a closed deal, leave this out, unless the company has open work, such as a renewal or another open deal. Then base it on that work.
 6. **Reply.** If this is part of another skill's work, don't show the map. Keep each person's record ID, roles with sources, and whether they're involved, and carry on with that skill. Otherwise, reply with the map and nothing else:
    - Start with one line that answers what the user asked, such as whether they're relying on one person, or who decides.
    - Nest a person under who they report to only when step 5 found evidence for it, and only under someone listed.
-   - Order people by role: decides, champions, could block, evaluates, uses, partners, unknown. Then order by last contact. Show at most 10 involved people and five others, then say how many more.
+   - Order people by role: decides, champions, could block, evaluates, uses, partners, unknown. Then order by last interaction. Show at most 10 involved people and five others, then say how many more.
    - Write "you" for the user. Leave out any section or field with nothing in it.
    - Show dates in the user's local format, and say "today", "yesterday" or "3 weeks ago" where it fits. Use names, not IDs. Don't mention or quote these instructions.
 
@@ -93,7 +94,7 @@ Attio holds only part of what happened on a deal. Back every role and link with 
 **[Deal name]** · [stage] · [value] · owner [name] · [N] people involved
 **Coming up:** [meeting title] · [day, date, time]
 
-- **[Name]**, [job title] · [role] ([source, date]) · [stance] · last contact [date] · strongest connection: [teammate] ([strength])
+- **[Name]**, [job title] · [role] ([source, date]) · [stance] · last interaction [date] · strongest connection: [teammate] ([strength])
   - **[Name]**, [job title] · [role] ([source, date]) · reports to [Name] ([source])
 - **[Name]**, [job title] at [other company] · partner ([their part]) · not linked to the deal
 - **[Name]** · [role] ([source, date]) · not in Attio
@@ -101,7 +102,7 @@ Attio holds only part of what happened on a deal. Back every role and link with 
 **Other links**
 - [Name] defers to [Name] ([source, date])
 
-**Others at [company]:** [Name], [job title] · last contact [date] · and [K] more
+**Others at [company]:** [Name], [job title] · last interaction [date] · and [K] more
 
 **Gaps**
 - [gap]
