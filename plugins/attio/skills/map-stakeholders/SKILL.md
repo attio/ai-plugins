@@ -5,7 +5,7 @@ description: Map who's involved in one deal in Attio and how they relate to each
 
 # Map stakeholders
 
-Attio holds only part of what happened on a deal. Back every role and link with a source, and never sound more certain than the source.
+Attio holds only part of what happened on a deal. Back every role and link with a source, and match your certainty to the source.
 
 1. **Find the deal.** Call `whoami` (only if you haven't already called it in this conversation), and get the current date and the user's time zone from your environment.
    - Search companies, people and deals for what the user names, in parallel, with `search-records`. Leave out words such as "deal" or "account".
@@ -25,8 +25,6 @@ Attio holds only part of what happened on a deal. Back every role and link with 
    - a link from one person to another, such as Manager
    - a role on the deal, such as Buying role
    - seniority or team
-
-   Don't suggest creating attributes.
 
 3. **Gather the evidence.** Reuse anything already read in this conversation, including full records that searches returned. Read the deal's people first, then run these in parallel:
    - **People at the company:** `list-records` on people with an `or` filter: the company is this one, or an email address ends with `@` and one of its domains. The domain finds people whose record isn't linked to the company. Read at most two pages. If there are more, say the list may be incomplete.
@@ -61,11 +59,11 @@ Attio holds only part of what happened on a deal. Back every role and link with 
    - Some plans hide interaction and connection attributes. If people records have none at all, take last contact from the latest evidence you found, and leave out strongest connection.
 5. **Work out the map.** Give a source and date for every role and link. A source is a short quote, something they did or the field it came from, such as "nothing gets signed before Dana's reviewed it" (call, 3 Nov) or "set up the demo" (meeting, 21 Oct). If you have no source, say unknown.
    - **Emails:** metadata shows who took part, not who has authority or who introduced whom. If an email would settle that, such as one asking for sign-off, read it with `get-email-content`, up to five. If it can't be read, use its subject and summary.
-   - **Framework:** use the user's sales framework if they name one, such as MEDDICC, but don't impose one.
+   - **Framework:** use the user's sales framework if they name one, such as MEDDICC.
    - **Role:** decides, champions, evaluates, uses, could block, or partner (their part, such as reseller or implementer). A person can have more than one.
      - If someone says they'll take it to a person for sign-off, such as "I'll take it to our CEO", that person likely decides. Say so, and quote it.
      - From a job title alone, you can only suggest evaluates or could block, for a function such as legal, security, IT or procurement. Mark it as guessed from title.
-     - Never guess who decides from seniority.
+     - Say who decides only from what someone said or did, or a field.
    - **Reporting lines:** only from a Manager-style attribute, or someone saying so, such as "my boss, Dana". "I'll run it by Dana" means they defer to Dana, not that they report to her.
    - **Introductions and stance:** only from what people said or did. Stance is for, against or neutral, with any condition they gave. If someone else reported it, say whose words they are. People only seen together were "first seen together", not introduced.
    - **Gaps:** what's missing or at risk among the customer's people involved in this deal. For example:
@@ -77,7 +75,7 @@ Attio holds only part of what happened on a deal. Back every role and link with 
      - a recent meeting has no recording or notes, so the map can't reflect it
      - people are involved but not linked to the deal, if the pipeline has an attribute for its people
 
-     A meeting booked with the decider isn't a gap: say it's booked. Say there's no recorded interaction in Attio only when the attribute exists and is empty. Don't say an email went unanswered if you found no emails at all.
+     A meeting booked with the decider isn't a gap: say it's booked. Say there's no recorded interaction in Attio only when the attribute exists and is empty. Say something went unanswered only if you found the emails.
 
    - **Next:** the one person to reach next, why, and the user's team's strongest Attio connection to them. Take booked meetings into account. Leave this out for a closed deal.
 6. **Reply.** If this is part of another skill's work, don't show the map. Keep each person's record ID, roles with sources, and whether they're involved, and carry on with that skill. Otherwise, reply with the map and nothing else:
