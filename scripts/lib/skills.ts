@@ -1,5 +1,5 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { readdir, readFile, stat } from "node:fs/promises";
+import { join, relative, resolve } from "node:path";
 import { parseDocument } from "yaml";
 
 /** Returns the YAML frontmatter, or undefined if it is missing or invalid. */
@@ -59,6 +59,62 @@ export function skillProblems(skill: Skill): string[] {
   const description = frontmatter["description"];
   if (typeof description !== "string" || description.trim() === "") problems.push("description is missing");
   return problems;
+}
+
+/**
+ * Problems with a skill's `agents/openai.yaml`, which sets the name, description and icon that ChatGPT and Codex show.
+ * It must declare the plugin's MCP servers, so Codex can offer to set them up when the skill is used without the plugin.
+ * @see https://learn.chatgpt.com/docs/build-skills#optional-metadata
+ */
+export async function openaiProblems(
+  root: string,
+  skill: Skill,
+  mcpServers: Readonly<Record<string, { url: string }>> = {},
+): Promise<string[]> {
+  const dir = join(root, "plugins", skill.plugin, "skills", skill.name);
+  const text = await readFile(join(dir, "agents", "openai.yaml"), "utf8").catch(() => undefined);
+  if (text === undefined) return ["is missing"];
+  const doc = parseDocument(text);
+  const data = (doc.errors.length > 0 ? undefined : doc.toJS()) as
+    { interface?: unknown; dependencies?: { tools?: unknown } } | null | undefined;
+  const ui = data?.interface;
+  if (ui === null || typeof ui !== "object" || Array.isArray(ui)) return ["needs an interface section"];
+  const fields = ui as Record<string, unknown>;
+  const problems: string[] = [];
+  const name = fields["display_name"];
+  if (typeof name !== "string" || name.trim() === "") problems.push("interface.display_name is missing");
+  const description = fields["short_description"];
+  if (typeof description !== "string" || description.length < 25 || description.length > 64) {
+    problems.push("interface.short_description must be 25 to 64 characters");
+  }
+  const pluginDir = join(root, "plugins", skill.plugin);
+  for (const key of ["icon_small", "icon_large"]) {
+    const icon = fields[key];
+    if (icon === undefined) continue;
+    const path = typeof icon === "string" ? resolve(dir, icon) : undefined;
+    const inside = path !== undefined && !relative(pluginDir, path).startsWith("..");
+    if (!inside || !(await isFile(path))) {
+      problems.push(`interface.${key} must be a file in the plugin, relative to the skill folder`);
+    }
+  }
+  const tools = Array.isArray(data?.dependencies?.tools) ? (data.dependencies.tools as Record<string, unknown>[]) : [];
+  for (const [server, { url }] of Object.entries(mcpServers)) {
+    const declared = tools.some(
+      (t) => t["type"] === "mcp" && t["value"] === server && t["transport"] === "streamable_http" && t["url"] === url,
+    );
+    if (!declared) {
+      problems.push(`dependencies.tools must declare the ${server} MCP server: streamable_http at ${url}`);
+    }
+  }
+  return problems;
+}
+
+async function isFile(path: string): Promise<boolean> {
+  try {
+    return (await stat(path)).isFile();
+  } catch {
+    return false;
+  }
 }
 
 /** First sentence of a skill description, for tables. */

@@ -34,8 +34,16 @@
         "supportURL": "https://attio.com/help",
         "privacyPolicyURL": "https://attio.com/legal/privacy",
         "termsOfServiceURL": "https://attio.com/legal/services-agreement",
-        "composerIcon": "./assets/icon.png",
-        "logo": "./assets/icon.png"
+        "defaultPrompt": [
+          "Prep me for my next call",
+          "What needs attention in my pipeline?",
+          "Update my deals from today's calls"
+        ],
+        "brandColor": "#1D1E20",
+        "composerIcon": "./assets/logomark.svg",
+        "composerIconDark": "./assets/logomark-dark.svg",
+        "logo": "./assets/icon.png",
+        "logoDark": "./assets/logomark-dark.svg"
       },
       "onboardingSkill": "./skills/onboarding/SKILL.md"
     }

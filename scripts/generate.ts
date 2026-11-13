@@ -7,7 +7,7 @@ import { loadConfig } from "./lib/config.ts";
 import { buildOutputs, mcpFiles, ROOT_README } from "./lib/manifests.ts";
 import { error, report, ROOT, type Diagnostic } from "./lib/report.ts";
 import { loadAgentPluginSchemas } from "./lib/schemas.ts";
-import { loadSkills, skillProblems } from "./lib/skills.ts";
+import { loadSkills, openaiProblems, skillProblems } from "./lib/skills.ts";
 
 async function readOptional(path: string): Promise<string | undefined> {
   try {
@@ -30,6 +30,10 @@ const diagnostics: Diagnostic[] = [];
 for (const skill of skills) {
   for (const message of skillProblems(skill)) {
     diagnostics.push(error(`plugins/${skill.plugin}/skills/${skill.name}/SKILL.md`, message));
+  }
+  const mcpServers = config.plugins.find((p) => p.name === skill.plugin)?.mcpServers;
+  for (const message of await openaiProblems(ROOT, skill, mcpServers)) {
+    diagnostics.push(error(`plugins/${skill.plugin}/skills/${skill.name}/agents/openai.yaml`, message));
   }
 }
 let outputs: Map<string, string>;

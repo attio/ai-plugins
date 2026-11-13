@@ -46,8 +46,16 @@ export default defineConfig({
         shortDescription: "Build pipeline, grow accounts",
         longDescription:
           "Connect your Attio workspace to build pipeline, advance deals and grow accounts. Search, create and update records, and prepare for meetings.",
+        defaultPrompts: [
+          "Prep me for my next call",
+          "What needs attention in my pipeline?",
+          "Update my deals from today's calls",
+        ],
+        brandColor: "#1D1E20",
         logo: "./assets/icon.png",
-        composerIcon: "./assets/icon.png",
+        logoDark: "./assets/logomark-dark.svg",
+        composerIcon: "./assets/logomark.svg",
+        composerIconDark: "./assets/logomark-dark.svg",
         onboardingSkill: "onboarding",
       },
     },

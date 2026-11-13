@@ -52,7 +52,9 @@ function openaiManifest(config: Config, plugin: PluginConfig) {
     defaultPrompt: openai.defaultPrompts.length > 0 ? openai.defaultPrompts : undefined,
     brandColor: openai.brandColor,
     composerIcon: openai.composerIcon,
+    composerIconDark: openai.composerIconDark,
     logo: openai.logo,
+    logoDark: openai.logoDark,
   };
   const review = openai.review && {
     test_cases: {

@@ -35,7 +35,9 @@ const openai = z.strictObject({
   defaultPrompts: z.array(z.string().min(1).max(128)).max(3).default([]),
   brandColor: hexColor.optional(),
   logo: assetPath.optional(),
+  logoDark: assetPath.optional(),
   composerIcon: assetPath.optional(),
+  composerIconDark: assetPath.optional(),
   /** Name of the skill that runs when a user sets the plugin up. */
   onboardingSkill: name.optional(),
   review: z

@@ -1,0 +1,13 @@
+interface:
+  display_name: "Humanize Text"
+  short_description: "Make a draft sound like you wrote it"
+  icon_small: "../../assets/logomark.svg"
+  icon_large: "../../assets/icon.png"
+  brand_color: "#1D1E20"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "attio"
+      description: "Attio MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.attio.com/mcp"
