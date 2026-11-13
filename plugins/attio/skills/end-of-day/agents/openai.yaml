@@ -1,0 +1,6 @@
+interface:
+  display_name: "End of Day"
+  short_description: "Update your deals from today's calls"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon.png"
+  brand_color: "#1D1E20"
