@@ -62,7 +62,7 @@ export function skillProblems(skill: Skill): string[] {
 }
 
 /**
- * Problems with a skill's `agents/openai.yaml`, which sets the name, description and icon that ChatGPT and Codex show.
+ * Problems with a skill's `agents/openai.yaml`, which sets the name, description and icons that ChatGPT and Codex show.
  * It must declare the plugin's MCP servers, so Codex can offer to set them up when the skill is used without the plugin.
  * @see https://learn.chatgpt.com/docs/build-skills#optional-metadata
  */
@@ -87,14 +87,14 @@ export async function openaiProblems(
   if (typeof description !== "string" || description.length < 25 || description.length > 64) {
     problems.push("interface.short_description must be 25 to 64 characters");
   }
-  const pluginDir = join(root, "plugins", skill.plugin);
+  // Official plugins keep skill icons in the skill's own folder.
   for (const key of ["icon_small", "icon_large"]) {
     const icon = fields[key];
     if (icon === undefined) continue;
     const path = typeof icon === "string" ? resolve(dir, icon) : undefined;
-    const inside = path !== undefined && !relative(pluginDir, path).startsWith("..");
+    const inside = path !== undefined && !relative(dir, path).startsWith("..");
     if (!inside || !(await isFile(path))) {
-      problems.push(`interface.${key} must be a file in the plugin, relative to the skill folder`);
+      problems.push(`interface.${key} must be a file in the skill folder, such as ./assets/icon.png`);
     }
   }
   const tools = Array.isArray(data?.dependencies?.tools) ? (data.dependencies.tools as Record<string, unknown>[]) : [];
@@ -109,17 +109,17 @@ export async function openaiProblems(
   return problems;
 }
 
+/** First sentence of a skill description, for tables. */
+export function summary(description: string): string {
+  const text = description.replace(/\s+/g, " ").trim();
+  const match = /^(.+?(?<!\b(?:e\.g|i\.e|vs|cf|incl))[.!?])(?=\s+[A-Z`"'(\[]|$)/.exec(text);
+  return match?.[1] ?? text;
+}
+
 async function isFile(path: string): Promise<boolean> {
   try {
     return (await stat(path)).isFile();
   } catch {
     return false;
   }
-}
-
-/** First sentence of a skill description, for tables. */
-export function summary(description: string): string {
-  const text = description.replace(/\s+/g, " ").trim();
-  const match = /^(.+?(?<!\b(?:e\.g|i\.e|vs|cf|incl))[.!?])(?=\s+[A-Z`"'(\[]|$)/.exec(text);
-  return match?.[1] ?? text;
 }

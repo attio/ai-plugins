@@ -1,8 +1,8 @@
 interface:
   display_name: "Get My Pipeline"
   short_description: "See your open deals and what needs attention"
-  icon_small: "../../assets/logomark.svg"
-  icon_large: "../../assets/icon.png"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon.png"
   brand_color: "#1D1E20"
 dependencies:
   tools:

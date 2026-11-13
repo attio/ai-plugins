@@ -33,11 +33,13 @@ const openai = z.strictObject({
   longDescription: z.string().min(1).max(4000),
   capabilities: z.array(z.string().min(1).max(120)).max(20).default([]),
   defaultPrompts: z.array(z.string().min(1).max(128)).max(3).default([]),
+  /** Needs at least 2:1 contrast against white. */
   brandColor: hexColor.optional(),
+  /** Needs at least 2:1 contrast against #212121. OpenAI derives one from `brandColor` when it's left out. */
+  brandColorDark: hexColor.optional(),
   logo: assetPath.optional(),
   logoDark: assetPath.optional(),
   composerIcon: assetPath.optional(),
-  composerIconDark: assetPath.optional(),
   /** Name of the skill that runs when a user sets the plugin up. */
   onboardingSkill: name.optional(),
   review: z
