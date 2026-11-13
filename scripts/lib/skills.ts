@@ -63,20 +63,14 @@ export function skillProblems(skill: Skill): string[] {
 
 /**
  * Problems with a skill's `agents/openai.yaml`, which sets the name, description and icons that ChatGPT and Codex show.
- * It must declare the plugin's MCP servers, so Codex can offer to set them up when the skill is used without the plugin.
  * @see https://learn.chatgpt.com/docs/build-skills#optional-metadata
  */
-export async function openaiProblems(
-  root: string,
-  skill: Skill,
-  mcpServers: Readonly<Record<string, { url: string }>> = {},
-): Promise<string[]> {
+export async function openaiProblems(root: string, skill: Skill): Promise<string[]> {
   const dir = join(root, "plugins", skill.plugin, "skills", skill.name);
   const text = await readFile(join(dir, "agents", "openai.yaml"), "utf8").catch(() => undefined);
   if (text === undefined) return ["is missing"];
   const doc = parseDocument(text);
-  const data = (doc.errors.length > 0 ? undefined : doc.toJS()) as
-    { interface?: unknown; dependencies?: { tools?: unknown } } | null | undefined;
+  const data = (doc.errors.length > 0 ? undefined : doc.toJS()) as { interface?: unknown } | null | undefined;
   const ui = data?.interface;
   if (ui === null || typeof ui !== "object" || Array.isArray(ui)) return ["needs an interface section"];
   const fields = ui as Record<string, unknown>;
@@ -95,15 +89,6 @@ export async function openaiProblems(
     const inside = path !== undefined && !relative(dir, path).startsWith("..");
     if (!inside || !(await isFile(path))) {
       problems.push(`interface.${key} must be a file in the skill folder, such as ./assets/icon.png`);
-    }
-  }
-  const tools = Array.isArray(data?.dependencies?.tools) ? (data.dependencies.tools as Record<string, unknown>[]) : [];
-  for (const [server, { url }] of Object.entries(mcpServers)) {
-    const declared = tools.some(
-      (t) => t["type"] === "mcp" && t["value"] === server && t["transport"] === "streamable_http" && t["url"] === url,
-    );
-    if (!declared) {
-      problems.push(`dependencies.tools must declare the ${server} MCP server: streamable_http at ${url}`);
     }
   }
   return problems;

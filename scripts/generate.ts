@@ -31,8 +31,7 @@ for (const skill of skills) {
   for (const message of skillProblems(skill)) {
     diagnostics.push(error(`plugins/${skill.plugin}/skills/${skill.name}/SKILL.md`, message));
   }
-  const mcpServers = config.plugins.find((p) => p.name === skill.plugin)?.mcpServers;
-  for (const message of await openaiProblems(ROOT, skill, mcpServers)) {
+  for (const message of await openaiProblems(ROOT, skill)) {
     diagnostics.push(error(`plugins/${skill.plugin}/skills/${skill.name}/agents/openai.yaml`, message));
   }
 }

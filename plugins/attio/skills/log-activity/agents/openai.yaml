@@ -4,10 +4,3 @@ interface:
   icon_small: "./assets/icon-small.svg"
   icon_large: "./assets/icon.png"
   brand_color: "#1D1E20"
-dependencies:
-  tools:
-    - type: "mcp"
-      value: "attio"
-      description: "Attio MCP server"
-      transport: "streamable_http"
-      url: "https://mcp.attio.com/mcp"

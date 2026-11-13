@@ -80,18 +80,6 @@ describe("openaiProblems", () => {
     ]);
   });
 
-  it("checks the skill declares the plugin's MCP server", async () => {
-    const servers = { crm: { url: "https://mcp.example.com/mcp" } };
-    const dependency = (url: string) =>
-      `dependencies:\n  tools:\n    - type: "mcp"\n      value: "crm"\n      transport: "streamable_http"\n      url: "${url}"\n`;
-    const declared = await fixtureRepo(yaml(valid + dependency("https://mcp.example.com/mcp")));
-    assert.deepEqual(await openaiProblems(declared, skill, servers), []);
-    const wrongUrl = await fixtureRepo(yaml(valid + dependency("https://old.example.com/mcp")));
-    assert.deepEqual(await openaiProblems(wrongUrl, skill, servers), [
-      "dependencies.tools must declare the crm MCP server: streamable_http at https://mcp.example.com/mcp",
-    ]);
-  });
-
   it("reports a file without an interface", async () => {
     const root = await fixtureRepo({
       "plugins/crm/skills/intro/agents/openai.yaml": "policy:\n  allow_implicit_invocation: false\n",
