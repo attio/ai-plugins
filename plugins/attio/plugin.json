@@ -41,9 +41,8 @@
         ],
         "brandColor": "#1D1E20",
         "brandColorDark": "#FFFFFF",
-        "composerIcon": "./assets/icon.svg",
-        "logo": "./assets/icon.png",
-        "logoDark": "./assets/logomark-dark.svg"
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
       },
       "onboardingSkill": "./skills/onboarding/SKILL.md"
     }
