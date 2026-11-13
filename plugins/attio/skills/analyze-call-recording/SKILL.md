@@ -29,7 +29,7 @@ If the meeting has no recording, say so. Calls logged from a dialer are activity
 Fetch the recording with `get-call-recording` and read all of it before you form a view. If the meeting has more than one recording, read them all as one call, and say which part each quote comes from. The call type often becomes clear late, for example when pricing comes up near the end.
 
 - Analyze only recordings with `status: finished`. If it's `preparing` or `in-progress`, tell the user the recording isn't finished yet and to try again later. If it's `failed`, say the recording failed. Then stop.
-- Work out which speakers are on the user's side (`whoami` and `list-workspace-members`, unless you already have them) and which are external. The searches don't return participants, so use the transcript's speakers. People who didn't speak won't appear.
+- Work out which speakers are on the user's side (`whoami` and `list-workspace-members`, unless you already have them) and which are external. `search-meetings` lists who was invited, but only the transcript shows who spoke. Use the transcript's speakers, and the participants for anyone invited who didn't speak.
 - Transcription garbles names of people, companies and products. Infer the intended word from context, and do not quote the error as fact.
 
 ## 3. Classify the call
