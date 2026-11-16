@@ -1,8 +1,5 @@
 # Attio AI plugins
 
-> [!NOTE]
-> Work in progress: the skills in these plugins are still being written.
-
 Plugins that bring [Attio](https://attio.com) to AI assistants and coding agents, including Claude, Claude
 Code, ChatGPT and Codex. Each plugin bundles [Agent Skills](https://agentskills.io) and, where it needs
 workspace access, the [Attio MCP server](https://docs.attio.com/mcp/overview).
