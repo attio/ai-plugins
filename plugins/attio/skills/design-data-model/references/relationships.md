@@ -10,7 +10,7 @@ Before making a text or select attribute, ask:
 2. Would the team look at it from the other side too, such as "all deals for this champion"? Then make it a relationship. If only one side matters, a record reference attribute is enough.
 3. Is it only a flat label, such as priority, or a region with no territory data? Then a select is fine.
 
-When in doubt between text and a link to an object that already exists, use the relationship. A missing relationship is hard to spot later. A relationship should still point at a standard object where it can: Account to Companies, Champion to People, Subscription to Workspaces. Making something a relationship doesn't mean creating a new object to point at.
+When in doubt between text and a link to an object that already exists, use the relationship. A missing relationship is hard to spot later. A relationship should still point at a standard object where it can: Account to Companies, Champion to People. Making something a relationship doesn't mean creating a new object to point at.
 
 Teammates, such as an account owner, CSM or partner manager on the user's team, are workspace members (type `actor-reference`), not people records, so the team can filter for their own records.
 

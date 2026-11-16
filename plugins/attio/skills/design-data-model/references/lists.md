@@ -2,7 +2,7 @@
 
 A list is a segment of existing records of one object, such as target accounts or event guests, or a process the team runs on them, such as onboarding customers, raising a round or hiring. If the thing being tracked has its own records, value and stages, such as a deal, a partnership or an investment, make it an object instead. A pipeline of opportunities, such as renewals or partnerships, isn't a list: follow the pipeline rule in SKILL.md. If you can describe the group with a filter on the object, use a view instead. Put the list on the object whose records it holds.
 
-You can create a list, add records to it and create its views, but you can't create attributes on a list. So create the list, and in the draft name its attributes, with their types, options and stages, for the user to add in Attio. Don't put them on the object instead. Create the views that don't need those attributes, such as a table of every entry, and list the rest to create once the user has added the attributes. In the end, a good list has one kanban view grouped by its stage, plus 2 or 3 filtered table views.
+You can create a list, add records to it and create its views, but you can't create attributes on a list. So create the list, and in the draft name its attributes, with their types, options and stages, for the user to add in Attio. Don't put them on the object instead. Create the views that don't need those attributes, such as a table of every entry, and list the rest to create once the user has added the attributes.
 
 If you're not sure a list applies, ask, and recommend leaving it out. Lists are easy to add later.
 
@@ -24,7 +24,7 @@ A Customer Success list for a team that already marks customers with a Relations
 ```
 | Change | On | Type | Details |
 | --- | --- | --- | --- |
-| Create list Customer Success | Companies | List | Private: full access for you and the CS team |
+| Create list Customer Success | Companies | List | Private: full access for you, Sam and Priya |
 | Add 18 companies | Customer Success | List entries | Companies whose Relationship type is Customer |
 | Create view All accounts | Customer Success | Table | Every company in the list |
 
