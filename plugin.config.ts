@@ -16,7 +16,7 @@ const keywords = [
 ];
 
 export default defineConfig({
-  version: "1.0.18",
+  version: "1.0.19",
   repository: "attio/ai-plugins",
   author: { name: "Attio", url: "https://attio.com" },
   license: "PolyForm-Shield-1.0.0",

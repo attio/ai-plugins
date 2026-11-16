@@ -9,7 +9,7 @@ The model shows how the user's sales, partnerships and customer success teams us
 
 ## Standard objects first
 
-Attio has five standard objects: Companies, People, Deals, Users and Workspaces. Use them as much as you can. Unnecessary custom objects are the most common way a model goes wrong: they split the data, break the links between records, and leave a mess to clean up later. Decide object by object.
+Attio has five standard objects: Companies, People, Deals, Users and Workspaces. Use them as much as you can: Companies and People also get enrichment, email and calendar sync, and interaction dates, which custom objects don't. Unnecessary custom objects are the most common way a model goes wrong: they split the data, break the links between records, and leave a mess to clean up later. Decide object by object.
 
 | Object                                   | Include when                                                                                                                                                                                                                                                                            | Not when                                                                                                                                | If unsure                                                                                     |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -29,11 +29,11 @@ Sales-led businesses often want Products, Line items, Contracts and Invoices in 
 
 Make a custom object only if the answer to the first two questions is no, and the third holds:
 
-1. **Is it really a company or a person?** Clients, accounts, vendors, agencies and MSPs are companies, and so are the organizations behind partnerships and investments. Contacts, champions, stakeholders and attendees are people. Mark a group of them with a select or multi-select, such as Relationship type, or a list, not a new object. But a partnership or an investment with its own stage, value and owner is often worth its own object, linked to the company (step 3).
+1. **Is it really a company or a person?** Clients, accounts, vendors, agencies and MSPs are companies, and so are the organizations behind partnerships and investments. Contacts, champions, stakeholders and attendees are people. Mark a group of them with a select or multi-select, such as Relationship type, or a list, not a new object. A partner that can be either a company or a person needs its own object. And a partnership or an investment with its own stage, value and owner is often worth its own object, linked to the company (step 3).
 2. **Is it really a user or a workspace?** Seats are users. A customer's account or tenant in the product is a workspace.
 3. **Does it stand on its own?** It has its own lifecycle, attributes and identity, and folding it into a standard object would lose information. Good examples are Partnerships, Investments, LPs, Funds, Projects, Facility agreements, Insurance policies, Properties, Loans and Vessels, plus Products, Line items, Contracts or Invoices when the team works them in Attio. A custom Subscription object is right only when billing is tracked as its own thing, separate from the workspace.
 
-Before adding an object, consider attributes on a standard object, or a select or list to mark a group. Use at most 6 custom objects, counting Products and Line items. Zero is often right. Never add objects to reach a number.
+Before adding an object, check whether an attribute, view or list would do: when in doubt, choose the lighter structure. Use at most 6 custom objects, counting Products and Line items, and fewer on smaller plans, which limit how many objects a workspace can have. Zero is often right. Never add objects to reach a number.
 
 ## Every attribute traces to evidence
 
