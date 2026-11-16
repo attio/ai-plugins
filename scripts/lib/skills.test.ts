@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { fixtureRepo, skillFile } from "./fixtures.ts";
-import { loadSkills, parseSkillFile, skillProblems, summary } from "./skills.ts";
+import { loadSkills, openaiProblems, parseSkillFile, skillProblems, summary } from "./skills.ts";
 
 describe("parseSkillFile", () => {
   it("parses frontmatter", () => {
@@ -40,6 +40,51 @@ describe("skillProblems", () => {
       'name must be "intro", the folder name',
       "description is missing",
     ]);
+  });
+});
+
+describe("openaiProblems", () => {
+  const skill = { plugin: "crm", name: "intro", frontmatter: undefined };
+  const yaml = (fields: string) => ({ "plugins/crm/skills/intro/agents/openai.yaml": `interface:\n${fields}` });
+  const valid = '  display_name: "Intro"\n  short_description: "Introduce the CRM to a new user"\n';
+
+  it("accepts a name and a description", async () => {
+    assert.deepEqual(await openaiProblems(await fixtureRepo(yaml(valid)), skill), []);
+  });
+
+  it("reports a missing file", async () => {
+    assert.deepEqual(await openaiProblems(await fixtureRepo({}), skill), ["is missing"]);
+  });
+
+  it("accepts icons in the skill folder and reports ones outside it or missing", async () => {
+    const good = '  icon_small: "./assets/small.svg"\n  icon_large: "./assets/large.png"\n';
+    const root = await fixtureRepo({
+      ...yaml(valid + good),
+      "plugins/crm/skills/intro/assets/small.svg": "svg",
+      "plugins/crm/skills/intro/assets/large.png": "png",
+    });
+    assert.deepEqual(await openaiProblems(root, skill), []);
+    const bad = '  icon_small: "../../assets/icon.png"\n  icon_large: "./none.png"\n';
+    const outside = await fixtureRepo({ ...yaml(valid + bad), "plugins/crm/assets/icon.png": "png" });
+    assert.deepEqual(await openaiProblems(outside, skill), [
+      "interface.icon_small must be a file in the skill folder, such as ./assets/icon.png",
+      "interface.icon_large must be a file in the skill folder, such as ./assets/icon.png",
+    ]);
+  });
+
+  it("reports a missing name and a description of the wrong length", async () => {
+    const root = await fixtureRepo(yaml('  short_description: "Too short"\n'));
+    assert.deepEqual(await openaiProblems(root, skill), [
+      "interface.display_name is missing",
+      "interface.short_description must be 25 to 64 characters",
+    ]);
+  });
+
+  it("reports a file without an interface", async () => {
+    const root = await fixtureRepo({
+      "plugins/crm/skills/intro/agents/openai.yaml": "policy:\n  allow_implicit_invocation: false\n",
+    });
+    assert.deepEqual(await openaiProblems(root, skill), ["needs an interface section"]);
   });
 });
 
