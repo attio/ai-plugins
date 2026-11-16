@@ -17,7 +17,7 @@ When a business fits several of these, model the main one in full, and add only 
 
 ## Weigh the evidence
 
-- The user's own words beat what you infer from their website. Their own words include anything they tell you, their existing deal attributes, and their call notes, emails and descriptions of how the team works. When sources disagree, ask which is right rather than picking one.
+- What the user tells you and what their workspace already holds beat what you infer from their website. If the user and their workspace disagree, ask which is right.
 - Useful signals on a website: the main button's wording, named customers and case studies, the pricing model and plans, partner pages, "For X" pages, and the job titles of the buyers it speaks to.
 - Useful signals from the user: the things and pipelines they describe, "we want to track X", and anything that happens again and again.
 - Treat gaps as questions for the user, never as facts.

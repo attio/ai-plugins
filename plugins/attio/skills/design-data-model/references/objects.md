@@ -32,7 +32,7 @@ Make a custom object only if the answer to the first two questions is no, and th
 2. **Is it really a user or a workspace?** Seats are users. A customer's tenant or subscription is a workspace.
 3. **Does it stand on its own?** It has its own lifecycle, attributes and identity, and folding it into a standard object would lose information. Good examples are LPs, Funds, Projects, Facility agreements, Insurance policies, Properties, Loans and Vessels, plus Products, Line items, Contracts or Invoices when the team works them in Attio. A custom Subscription object is right only when billing is tracked as its own thing, separate from the workspace.
 
-Before adding an object, consider attributes on a standard object, or a select or list to mark a group. Use at most about 6 custom objects, counting Products and Line items. Zero is often right. Never add objects to reach a number.
+Before adding an object, consider attributes on a standard object, or a select or list to mark a group. Use at most 6 custom objects, counting Products and Line items. Zero is often right. Never add objects to reach a number.
 
 ## Every attribute traces to evidence
 
