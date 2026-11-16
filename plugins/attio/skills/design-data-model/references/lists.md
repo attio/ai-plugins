@@ -16,3 +16,22 @@ If you're not sure a list applies, ask, and recommend leaving it out. Lists are 
 | Recruiting          | The user works in recruiting, talent acquisition or HR, or the business is a recruiting or staffing agency       |                                                             | Candidate stage, such as Applied → Screen → Interview → Offer → Hired · Rejected. Applying for, Role level, Team, Manager, Employment status, Potential start date, Source, Source type  | Candidate pipeline, All applications, one view per team               |
 
 Customer Success sits on Companies, or Workspaces if product data is synced there. Portfolio and Startup Fundraising sit on Companies, and Recruiting on People.
+
+## Example
+
+A Customer Success list for a team that already marks customers with a Relationship type:
+
+```
+| Change | On | Type | Details |
+| --- | --- | --- | --- |
+| Create attribute Customer stage | Companies | Status | Onboarding, Active, At risk, Churned |
+| Create attribute Primary CSM | Companies | Workspace member | |
+| Create attribute Health | Companies | Select | Healthy, Watch, At risk. How likely the customer is to renew |
+| Create list Customer Success | Companies | List | Everyone in the workspace has full access |
+| Add 18 companies | Customer Success | List entries | Companies whose Relationship type is Customer |
+| Create view Accounts by stage | Customer Success | Kanban | Grouped by Customer stage |
+| Create view Onboarding | Customer Success | Table | Customer stage is Onboarding |
+| Create view At risk | Customer Success | Table | Health is At risk |
+```
+
+The stage and attributes sit on Companies because a list can't have its own here, and the list's views group and filter by them.
