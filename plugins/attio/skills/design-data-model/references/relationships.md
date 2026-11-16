@@ -10,13 +10,13 @@ Before making a text or select attribute, ask:
 2. Would the team look at it the other way around, such as "all deals for this champion"? Then make it two-way.
 3. Is it only a flat label, such as priority, or a region with no territory data? Then a select is fine.
 
-When in doubt, use the relationship. A missing relationship is hard to spot later. A relationship should still point at a standard object where it can: Account to Companies, Champion to People, Subscription to Workspaces. Making something a relationship doesn't mean creating a new object to point at.
+When in doubt between text and a link to an object that already exists, use the relationship. A missing relationship is hard to spot later. A relationship should still point at a standard object where it can: Account to Companies, Champion to People, Subscription to Workspaces. Making something a relationship doesn't mean creating a new object to point at.
 
 Teammates, such as an account owner, CSM or partner manager on the user's team, are workspace members, not people records, so the team can filter for their own records.
 
 ## Common traps
 
-These look like text or selects but should be relationships, because they point at standard objects: Champion, Economic buyer, Parent company (Companies to itself), Referring partner, and Renewal of and Upsell of (Deals to itself). Subscription plan, Source campaign, Territory when it has owner or quota data, and Products sold are relationships only if the object they'd point at passes the test in `objects.md`. Otherwise use a select. Account owner, CSM and Partner manager look like text too, but are workspace members. Industry is usually fine as a select.
+These look like text or selects but should be relationships, because they point at standard objects: Champion, Economic buyer, Parent company (Companies to itself), Referring partner, and Renewal of and Upsell of (Deals to itself). Subscription plan, Source campaign, Territory when it has owner or quota data, and Products sold are relationships only if the object they'd point at passes the test in `objects.md`. Otherwise use a select. Industry is usually fine as a select.
 
 ## One-way or two-way
 

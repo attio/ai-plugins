@@ -2,10 +2,10 @@
 
 When a gap would change what gets built, ask before drafting.
 
-- Ask only when the answer changes which objects, relationships or lists you create. Don't ask what the evidence already answers clearly, or about details that are easy to change later, such as option or attribute names.
+- Ask only when the answer changes which objects, relationships or lists you create. Don't ask what the evidence already answers clearly, or about details the user can easily change in Attio later, such as attribute names.
 - Ask at most 4 at a time, each one standing on its own, each with 2 to 4 options. Put the recommended option first, and say why in a line. Use plain, friendly words, and explain any Attio term the user may not know.
 - If the user doesn't know or has no preference, use the recommended option and list it as an assumption in the draft.
-- Write only once every question that changes the structure is answered.
+- Draft only once every question that changes the structure is answered or has a recommended option in place.
 
 | When it's unclear              | Ask                                                                                                                                                | Recommend                                                                                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -15,5 +15,6 @@ When a gap would change what gets built, ask before drafting.
 | What partners do               | Do partners refer deals, sell alongside you, or resell?                                                                                            | Partners as companies with a tier select, and nothing more yet.                                                              |
 | What they'll use Attio for     | Will you mainly use Attio to win new customers, look after existing ones, raise money or invest, or hire?                                          | Winning new customers, the most common use. The answer decides which lists fit (`lists.md`).                                 |
 | Product data                   | Do you want your product's usage, account or billing data in Attio: for each person who uses it, each customer account, both, or neither?          | Neither, leaving Users and Workspaces out. If they want it, both, plus a Pricing model select.                               |
+| Pipelines                      | Which kinds of deals does your team work: new business, renewals, partner deals?                                                                   | One new business pipeline.                                                                                                   |
 | Quotes, contracts and invoices | When you send a customer a quote or invoice, where do you put it together: in Attio, or in another tool, such as your billing or quoting software? | Summary attributes on the deal or company, such as ARR or Contract end date, unless they build quotes and invoices in Attio. |
 | Investors                      | Do you invest in companies, raise your own fund, or both?                                                                                          | A Portfolio list, adding LPs and Funds only if they manage their own fundraising in Attio.                                   |
