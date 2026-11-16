@@ -2,7 +2,7 @@
 
 ## Link records instead of typing them
 
-The biggest mistake is turning a relationship into a text or select attribute. A good Attio workspace is linked records, not a spreadsheet, and it changes how the workspace feels to use: a Champion that links to a person reads very differently from a typed name.
+The biggest mistake is turning a relationship into a text or select attribute. A good Attio workspace is linked records, not a spreadsheet. A Champion that links to a person is far more useful than a typed name.
 
 Before making a text or select attribute, ask:
 
@@ -16,11 +16,11 @@ Teammates, such as an account owner, CSM or partner manager on the user's team, 
 
 ## Common traps
 
-These look like text or selects but should be relationships: Champion, Economic buyer, Account owner, CSM, Partner manager, Subscription plan, Source campaign, Parent company (Companies to itself), Referring partner, Renewal of and Upsell of (Deals to itself), Territory when it has owner or quota data, and Products sold. Industry is usually fine as a select.
+These look like text or selects but should be relationships: Champion, Economic buyer, Subscription plan, Source campaign, Parent company (Companies to itself), Referring partner, Renewal of and Upsell of (Deals to itself), Territory when it has owner or quota data, and Products sold. Account owner, CSM and Partner manager look like text too, but are workspace members. Industry is usually fine as a select.
 
 ## One-way or two-way
 
-Make a relationship two-way when both sides will be common views, and name both sides. Keep one-way links, a record reference attribute, for simple lookups.
+Make a relationship two-way when the team will look at it from both sides, and name both sides. Use a one-way link (a record reference attribute) for simple lookups.
 
 ## Links Attio already has
 
@@ -28,6 +28,6 @@ Leave out links Attio already has: people to their company, deals to their compa
 
 ## Link to Deals
 
-For each custom object, ask: does a record of this result from a deal, drive one, get billed against one, or get tracked per deal? If so, link it to Deals, two-way. This is the link most often missed. Typical cases are subscriptions, invoices, workspaces, funds, marketing campaigns and events.
+For each custom object, and for Workspaces, ask: do its records come from a deal, lead to one, get billed against one, or get tracked per deal? If so, link it to Deals, two-way. This is the link most often missed. Typical cases are subscriptions, invoices, workspaces, funds, marketing campaigns and events.
 
-Lookups such as Industry or Territory don't need a Deals link. Link them to Companies if anything, and say in the draft why there's no Deals link.
+Lookups such as Industry or Territory don't need a Deals link. If they need a link, link them to Companies, and say in the draft why there's no Deals link.
