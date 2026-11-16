@@ -1,6 +1,6 @@
 # Lists
 
-A list is a segment of existing records of one object, such as target accounts or event guests, or a process the team runs on them, such as onboarding customers, raising a round or hiring. If the thing being tracked has its own records, value and stages, such as a deal, a partnership or an investment, make it an object instead. A pipeline of opportunities, such as renewals or partnerships, isn't a list: follow the pipeline rule in SKILL.md. If you can describe the group with a filter on the object, use a view instead. Put the list on the object whose records it holds.
+A list is a segment of existing records of one object, such as target accounts or event guests, or a process the team runs on them, such as onboarding customers, raising a round or hiring. If you can describe the group with a filter on the object, use a view instead. If the thing being tracked has its own records, value and stages, such as a deal, a partnership or an investment, make it an object instead, and follow the pipeline rule in SKILL.md for renewals or partnerships. Put the list on the object whose records it holds.
 
 You can create a list, add records to it and create its views, but you can't create attributes on a list. So create the list, and in the draft name its attributes, with their types, options and stages, for the user to add in Attio. Don't put them on the object instead. Create the views that don't need those attributes, such as a table of every entry, and list the rest to create once the user has added the attributes.
 
@@ -15,7 +15,7 @@ The attributes in the table are examples. Suggest only the ones the team needs. 
 | Recruiting          | The user works in recruiting, talent acquisition or HR, or the business is a recruiting or staffing agency       |                                                             | Stage, such as Applied → Screen → Interview → Offer → Hired · Rejected. Applying for, Role level, Team, Manager, Employment status, Potential start date, Source, Source type | Candidate pipeline (kanban), All applications (every entry), one view per team (filtered by Team)                                                                                         |
 | Events              | The team runs events and tracks who's invited and who comes                                                      | One-off events with no follow-up                            | Status, such as Invited → Registered → Attended · No-show. Invitation owner, Dietary needs                                                                                    | All guests (every entry), By status (kanban)                                                                                                                                              |
 
-Customer Success sits on Companies, or on Workspaces if product data is synced there. Startup Fundraising sits on Companies, and Recruiting and Events on People.
+Customer Success sits on Companies, or on Workspaces if product data is synced there. Startup Fundraising sits on Companies, and Recruiting and Events on People. Use one Events list per event. If events have their own budget and owner, make an Events object, and track each event's guests on its own list.
 
 ## Example
 
@@ -32,7 +32,7 @@ I can't add attributes to a list, so please add these to Customer Success in Att
 - Stage (status): Onboarding → Active → At risk → Churned
 - Primary CSM (workspace member)
 - ARR (currency, USD)
-- Health (select): Healthy, Watch, At risk. How likely the customer is to renew
+- Health (select): Healthy, Watch, Unhealthy. How likely the customer is to renew
 
 Once you have, I can create the Accounts by stage, Onboarding, Steady accounts and High revenue accounts views.
 
