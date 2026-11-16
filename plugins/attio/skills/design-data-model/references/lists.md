@@ -1,6 +1,6 @@
 # Lists
 
-A list is a process the team runs on some existing records, usually with stages: onboarding customers, raising a round, hiring, managing a portfolio. When the thing being tracked is a process run on companies or people, use a list, not a custom object. Put the list on the object the team works.
+A list is a process the team runs on some existing records, usually with stages: onboarding customers, raising a round, hiring, managing a portfolio. When the thing being tracked is a process run on companies or people, use a list, not a custom object. A pipeline of opportunities, such as renewals or partnerships, isn't a list: follow the pipeline rule in SKILL.md. Put the list on the object the team works.
 
 A good list tracks a stage, an owner, an amount where money is involved, and a reason for losing or passing. These belong on the list, not the object, because a record can go through the process more than once, such as a person applying for two roles.
 
