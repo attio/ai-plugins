@@ -7,9 +7,9 @@ description: Gather customer feedback from Attio, either across every customer f
 
 Feedback is what a customer or prospect says about the product: a feature they ask for, something missing or broken, a complaint, a comparison with a competitor, praise, or a reason they didn't buy or might leave. Look for it only in call recordings, emails and notes, not in other objects, lists or deal fields.
 
-Feedback comes from the customer's side. Anyone on the user's email domain is a teammate. A call speaker has no address, so check a name you're unsure of with `list-workspace-members`. A teammate explaining a limitation or promising a date is not feedback, though their email often quotes a customer message that is.
+Feedback comes from the customer's side. Teammates are the people `list-workspace-members` returns, and anyone on their email domain. A teammate explaining a limitation or promising a date is not feedback, though their email often quotes a customer message that is.
 
-1. Call `whoami` (only if you haven't already called it in this conversation), and get the current date from your environment. Work out what the user is asking:
+1. Get the current date from your environment, and work out what the user is asking:
    - **A feature or topic across customers** ("how many accounts want better permissions?"): follow steps 2 to 5.
    - **One customer** ("what feedback has Acme given?"): follow steps 6 to 8.
    - Both ("what has Acme said about permissions?"): follow steps 6 to 8 and keep only that topic.
@@ -25,7 +25,7 @@ Feedback comes from the customer's side. Anyone on the user's email domain is a 
 4. Check each result and find its company. Keep it only if someone on the customer's side asks for the thing, misses it or complains about it.
    - **Calls:** the matching part is usually enough to judge. Get the titles and dates of the calls you keep with `render-meetings`, which also shows the user that list. The company is the one the title names. Otherwise find the customer speaker in people (`search-records`) and use their company.
    - **Emails:** the search returns Attio's summary, which is never the customer's wording. For every company you quote or rate above _mentioned_, read the customer's own email with `get-email-content`. Don't drop a thread because the result is a teammate's reply: open it, because the customer's message is quoted underneath. The company is the one that owns the customer's domain.
-   - **Notes:** read up to 10 with `get-note-body`, skipping notes written to prepare for a meeting. The company is the note's parent record, or that record's company if it's a deal or a person.
+   - **Notes:** read each one whose title looks relevant with `get-note-body`, skipping notes written to prepare for a meeting. The company is the note's parent record, or that record's company if it's a deal or a person.
    - To look up many records at once, use one `query-particle-sql` query that selects only the columns you need. A whole company record is very large.
    - A result whose company you can't find counts once, as "Unknown ([call title], [date])". Never name a row after a speaker.
 5. Weigh what you kept. A company counts once, however often it raised the topic.
@@ -37,7 +37,7 @@ Feedback comes from the customer's side. Anyone on the user's email domain is a 
 
 6. Find the record with `search-records`, in companies first, then deals. The search returns near matches, so take the record whose name or domain matches exactly, and of several, the one with the most history. Ask only if you still can't tell. For a deal or a person, use their company. Note the company's domains and deals.
 7. Collect what they've said over the last 12 months, unless the user gives another period. A company can also be a supplier or partner, so first set aside the calls and emails where they are selling to the user's team.
-   - **Calls:** `search-call-recordings-by-metadata` with the company as `related_record_ids`, then `render-meetings` for the titles, which also shows the user that list. Choose the calls where they talk about using the product, such as onboarding, check-ins and reviews, and read them with `get-call-recording`. Transcripts are long. If you can run subagents, read up to 10 calls, each in its own subagent that returns only the feedback, with quotes and times. Otherwise read the 4 most promising.
+   - **Calls:** `search-call-recordings-by-metadata` with the company as `related_record_ids`, then `render-meetings` for the titles, which also shows the user that list. Choose the calls where they talk about using the product, such as onboarding, check-ins and reviews, and read them with `get-call-recording`. Transcripts are long, so if you can run subagents, read each call in its own subagent that returns only the feedback, with quotes and times.
    - **Emails:** `search-emails-by-metadata` with the company's domains and `exclude_automated_participants` set to true, paging while it says there are more. Choose from the subjects and summaries, and read those with `get-email-content`, starting with the latest message in each thread, because it quotes the earlier ones.
    - **Notes:** `search-notes-by-metadata` for the company and its deals, then `get-note-body`.
 8. Pull out each piece of feedback: what they need or think, who said it, the date, the source and a short quote. Merge the same point from different places into one item, with its first and latest date, and give it a strength as in step 5. Note what the user's team replied, such as a workaround or a promised date, from the message itself.
