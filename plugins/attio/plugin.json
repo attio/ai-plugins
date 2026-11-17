@@ -27,7 +27,7 @@
       "interface": {
         "displayName": "Attio",
         "shortDescription": "Run your sales from ChatGPT",
-        "longDescription": "Attio is the CRM for agentic revenue. Access your revenue context and run sales directly from ChatGPT, working with live data to keep your pipeline moving.\n\nThe Attio plugin comes with pre-built sales skills for your key workflows like meeting prep, forecasting, pipeline review, and follow-ups.\n\n- Start in the sidebar to browse open tasks, today’s meetings, and starter prompts\n- Run the /end-of-day skill to check your pipeline, update deals, and action next steps\n- Bring any company or person into the chat with @ mentions so the chat is up to speed",
+        "longDescription": "Attio is the CRM for agentic revenue. Access your revenue context and run sales directly from ChatGPT, working with live data to keep your pipeline moving.\n\nThe Attio plugin comes with pre-built sales skills for your key workflows like meeting prep, forecasting, pipeline review, and follow-ups.\n\n- Start in the sidebar to browse open tasks, today’s meetings, and starter prompts\n- Run the end-of-day skill to check your pipeline, update deals, and action next steps\n- Bring any company or person into the chat with @ mentions so the chat is up to speed",
         "developerName": "Attio",
         "category": "Business & Operations",
         "capabilities": ["Interactive", "Read", "Write"],

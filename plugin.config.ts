@@ -21,7 +21,7 @@ const chatgptLongDescription = [
   "The Attio plugin comes with pre-built sales skills for your key workflows like meeting prep, forecasting, pipeline review, and follow-ups.",
   "",
   "- Start in the sidebar to browse open tasks, today’s meetings, and starter prompts",
-  "- Run the /end-of-day skill to check your pipeline, update deals, and action next steps",
+  "- Run the end-of-day skill to check your pipeline, update deals, and action next steps",
   "- Bring any company or person into the chat with @ mentions so the chat is up to speed",
 ].join("\n");
 
