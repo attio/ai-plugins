@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "attio",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Build pipeline, advance deals, and grow accounts.",
   "author": {
     "name": "Attio",
@@ -25,8 +25,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Attio",
-        "shortDescription": "Build pipeline, grow accounts",
-        "longDescription": "Connect your Attio workspace to build pipeline, advance deals and grow accounts. Search, create and update records, and prepare for meetings.",
+        "shortDescription": "Run your sales from ChatGPT",
+        "longDescription": "Access your revenue context directly from ChatGPT: deals, calls, emails, and the full activity for every account.\n\nWork with your live data from Attio to keep your pipeline moving. Records and meetings show up as Attio cards right in the chat, so you can see where things stand without switching tabs.\n\nThe Attio plugin comes with pre-built sales skills for your key workflows like meeting prep, pipeline review, call analysis, and follow-ups.\n\nAttio permissions carry over to the plugin, so ChatGPT only ever sees what you can see.\n\nHow it works\n\nNew to the plugin? Run the onboarding skill to see what Attio can do in ChatGPT.\n\nStart in the sidebar\nOpen Attio from the ChatGPT sidebar to browse your open tasks, today's meetings, and starter prompts. Ask what needs your attention, or try the Prep me for my next call prompt to get the full account rundown before a call.\n\nBring any record into the chat\nType @ to pull any Attio company or person into the conversation, so ChatGPT is up to speed right away. Research key contacts, summarize recent calls and what they mean for the deal, or find patterns across calls, like the pricing objections that keep coming up.\n\nWrap up your day in one prompt\nRun the /end-of-day skill to check the day's calls against your pipeline. It proposes deal updates and next steps, follow-up tasks and follow-up emails, and saves them once you approve.\n\nGet ahead of forecast\nAsk what's closing this month, what's at risk, or what's in a teammate's pipeline, and ChatGPT pulls the numbers from Attio, by stage, with totals. Then turn the answer into a ChatGPT Site to share before the next forecast call.\n\nSet up Attio by asking\nDescribe how you want your Attio workspace set up, and ChatGPT drafts the changes and updates the data model once you approve. Add new objects, attributes and lists, or create filtered and sorted views for how your team works. The /design-data-model skill uses best practices to structure your workspace for success.",
         "developerName": "Attio",
         "category": "Business & Operations",
         "capabilities": ["Interactive", "Read", "Write"],
