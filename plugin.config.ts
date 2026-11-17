@@ -15,8 +15,18 @@ const keywords = [
   "customer-success",
 ];
 
+const chatgptLongDescription = [
+  "Attio is the CRM for agentic revenue. Access your revenue context and run sales directly from ChatGPT, working with live data to keep your pipeline moving.",
+  "",
+  "The Attio plugin comes with pre-built sales skills for your key workflows like meeting prep, forecasting, pipeline review, and follow-ups.",
+  "",
+  "- Start in the sidebar to browse open tasks, today’s meetings, and starter prompts",
+  "- Run the /end-of-day skill to check your pipeline, update deals, and action next steps",
+  "- Bring any company or person into the chat with @ mentions so the chat is up to speed",
+].join("\n");
+
 export default defineConfig({
-  version: "1.0.19",
+  version: "1.0.20",
   repository: "attio/ai-plugins",
   author: { name: "Attio", url: "https://attio.com" },
   license: "PolyForm-Shield-1.0.0",
@@ -44,9 +54,8 @@ export default defineConfig({
       listed: true,
       icon: "./assets/icon.png",
       openai: {
-        shortDescription: "Build pipeline, grow accounts",
-        longDescription:
-          "Connect your Attio workspace to build pipeline, advance deals and grow accounts. Search, create and update records, and prepare for meetings.",
+        shortDescription: "Run your sales from ChatGPT",
+        longDescription: chatgptLongDescription,
         capabilities: ["Interactive", "Read", "Write"],
         defaultPrompts: [
           "Prep me for my next call",
