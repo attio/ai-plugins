@@ -26,7 +26,7 @@ const chatgptLongDescription = [
 ].join("\n");
 
 export default defineConfig({
-  version: "1.0.20",
+  version: "1.0.21",
   repository: "attio/ai-plugins",
   author: { name: "Attio", url: "https://attio.com" },
   license: "PolyForm-Shield-1.0.0",
